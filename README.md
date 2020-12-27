@@ -15,7 +15,7 @@ source venv/bin/activate
 ```
 3) Install the requirements 
 ```bash
-pip install -r req.txt
+pip install -r requirements.txt
 ```
 ###### Done
 
@@ -25,11 +25,18 @@ pip install -r req.txt
 Run the following lines on a terminal:
 ```bash
 export FLASK_APP=app.py
-flask run
-The app is going to be hosted on the link for example
 ```
+if you want to see errors activate debug:
+```bash
+export FLASK_DEBUG=1
+```
+```bash
+flask run
+```
+The app is going to be hosted on the link for example
+```bash
 <code> * Running on http://127.0.0.1:5000/</code>
-
+```
 ------
 
 ### Windows users, follow instructions bellow
