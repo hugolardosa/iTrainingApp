@@ -1,0 +1,7 @@
+flask
+email_validator
+flask_babelex
+flask-user
+flask_sqlalchemy
+flask_login
+werkzeug
