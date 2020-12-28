@@ -6,7 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
-app = Flask(__name__)
+
+app = Flask(__name__,
+            static_folder='static',
+            template_folder='templates')
+
 app.config['SECRET_KEY'] = 'm─AIQUDSddaosidfASIFOjeifowseiI*heO'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
@@ -78,7 +82,7 @@ def signup_post():
 
     if user: # if a user is found, we want to redirect back to signup page so user can try again
         flash('Email address already exists')
-        return redirect(url_for('signup'))
+        return redirect(url_for('login'))
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code, address=address, city=city, cell_phone=cell_phone, postal_code=postal_code,bday=bday, weight=weight, height=height, obj=obj, health_problems=health_problems)
@@ -107,7 +111,7 @@ def index():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return render_template('profile.html')
 
 
 

@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome, {{name}}!
-</h1>
+<h1>Your personal information </h1>
+<p>Name: {{current_user.name}}</p>
+<p>E-Mail: {{current_user.email}}</p>
+{% if current_user.name != 0 %}
+<p>Personal Trainer: {{current_user.pt_code}}</p>
+{% endif %}
+<p>Address: {{current_user.address}}</p>
+<p>City: {{current_user.city}}</p>
+<p>Cell Phone: {{current_user.cell_phone}}</p>
+<p>Postal Code: {{current_user.postal_code}}</p>
+<p>Birthday: {{current_user.bday}}</p>
+<p>Weight: {{current_user.weight}} kg</p>
+<p>Height: {{current_user.height}} cm</p>
+<p>Objectives: {{current_user.obj}}</p>
+<p>Health Problems: {{current_user.health_problems}}</p>
 {% endblock %}
