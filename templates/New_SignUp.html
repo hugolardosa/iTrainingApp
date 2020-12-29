@@ -1,33 +1,81 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/gradient-navbar-1.css">
-    <link rel="stylesheet" href="assets/css/gradient-navbar.css">
-    <link rel="stylesheet" href="assets/css/login-form-1.css">
-    <link rel="stylesheet" href="assets/css/login-form.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-
-<body style="color: var(--gray);">
-    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="assets/img/logo.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">First Item</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Second Item</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Third Item</a></li>
-                </ul>
+    <div class="container">
+        <div class="row center d-flex align-items-center myheight" style="height: 12em;">
+            <div class="col">
+                <h2>Registo</h2>
             </div>
         </div>
-    </nav>
-    <h3>User Information</h3>
+        
+        <div class="row center">
+            <div class="col-md-12">
+                <!-- <h4 class="text-muted">User Information</h4> -->
+                <div class="row my-3">
+                    <div class="col-md-6 offset-md-2">
+                        <input class="form-control" type="text" name="name" placeholder="Nome completo" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="tel" name="cell_phone" placeholder="Telemovel" required>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <div class="col-md-4 offset-md-2">
+                        <input class="form-control" type="text" name="email" placeholder="E-Mail" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+
+                <div class="row my-3" style="height: 40px;">
+                    <div class="col-md-4 offset-md-2 d-flex align-items-center">
+                        <div class="pl-4">
+                            <input class="form-check-input" type="checkbox" id="checkPT">
+                            <label class="form-check-label text-secondary" for="defaultCheck2">
+                                Sou Personal Trainer
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="inputPT"> 
+                        <!-- <input class="form-control" type="text" name="pt_code" placeholder="PT code" required> -->
+                    </div>
+                </div>
+
+                <!-- <h4 class="text-muted">Address Information</h4> -->
+
+                <div class="row my-3 mt-5">
+                    <div class="col-md-6 offset-md-2">
+                        <input class="form-control" type="text" name="address" placeholder="Morada" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="Nporta" placeholder="No." required>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <div class="col-md-6 offset-md-2">
+                        <input class="form-control" type="text" name="cidade" placeholder="Cidade" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="postal_code" placeholder="Codigo postal" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row center align-items-center" style="margin-top: 6em;">
+            <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button>
+                    <button type="button" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- o que estava-->
+    <!-- <h3>User Information</h3>
     <div></div>
     <div>
         <div class="container">
@@ -70,9 +118,8 @@
                 <div class="col-md-6"><input type="text" name="city" value="City" required=""></div>
             </div>
         </div>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
+    </div> -->
 
-</html>
+
+
+{% endblock %}

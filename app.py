@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager,UserMixin, login_required, current_user, login_user, logout_user
+from flask_login import LoginManager, UserMixin, login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -50,7 +50,7 @@ def login_post():
 
 @app.route('/signup')
 def signup():
-    return render_template('signup.html')
+    return render_template('New_SignUp.html')
 
 @app.route('/signup', methods=['POST'])
 def signup_post():
@@ -112,9 +112,6 @@ def index():
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
-
-
-
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, db.Sequence('user_id_seq') ,primary_key=True, autoincrement=True) # primary keys are required by SQLAlchemy

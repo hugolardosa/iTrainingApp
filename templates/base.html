@@ -45,15 +45,16 @@
             </div>
         </div>
     </nav>
-    <div class="container full-height">
-        <div class="row flex center v-center full-height">
+    <!-- <div class="container full-height">
+        <div class="row flex center v-center full-height"> -->
             {% block content %}
             {% endblock %}
-        </div>
-    </div>
+        <!-- </div>
+    </div> -->
     <div></div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
 </body>
 
 </html>

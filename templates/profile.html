@@ -4,7 +4,7 @@
 <h1>Your personal information </h1>
 <p>Name: {{current_user.name}}</p>
 <p>E-Mail: {{current_user.email}}</p>
-{% if current_user.name != 0 %}
+{% if current_user.pt_code != "" %}
 <p>Personal Trainer: {{current_user.pt_code}}</p>
 {% endif %}
 <p>Address: {{current_user.address}}</p>
