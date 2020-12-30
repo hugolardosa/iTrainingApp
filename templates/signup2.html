@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row center d-flex align-items-center myheight" style="height: 12em;">
+        <div class="col">
+            <h2>Dados Físicos</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-md-4 offset-md-2">
+                    <div class="form-group">
+                        <label for="dnasc">Data de Nascimento:</label>
+                        <input type="text" class="form-control" id="dnasc" placeholder="dd-mm-aaaa">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="peso">Peso:</label>
+                        <input type="text" class="form-control" id="peso" placeholder="kg">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="altura">Altura:</label>
+                        <input type="text" class="form-control" id="altura" placeholder="cm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="form-group">
+                <label for="obj">Objectivos:</label>
+                <textarea class="form-control" id="obj" rows="3" placeholder="Descreva aqui..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="form-group">
+                <label for="obj">Problemas de saúde/Limitações físicas:</label>
+                <textarea class="form-control" id="obj" rows="5" placeholder="Descreva aqui..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row center align-items-center" style="margin-top: 6em;">
+        <div class="col">
+            <a href="{{ url_for('signup') }}"><button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
+            <a href="{{ url_for('signup2') }}"><button type="button" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

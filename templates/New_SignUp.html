@@ -22,7 +22,7 @@
 
                 <div class="row my-3">
                     <div class="col-md-4 offset-md-2">
-                        <input class="form-control" type="text" name="email" placeholder="E-Mail" required>
+                        <input class="form-control" type="email" name="email" placeholder="E-Mail" required>
                     </div>
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="password" placeholder="Password" required>
@@ -67,59 +67,12 @@
         </div>
         <div class="row center align-items-center" style="margin-top: 6em;">
             <div class="col">
-                    <button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button>
-                    <button type="button" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button>
+                <a href="{{ url_for('index') }}"><button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
+                <a href="{{ url_for('signup2') }}"><button type="button" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button></a>
             </div>
         </div>
     </div>
 
-
-    <!-- o que estava-->
-    <!-- <h3>User Information</h3>
-    <div></div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 offset-xl-0"><input type="text" name="name" value="Name" required=""></div>
-                <div class="col">
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">I'm a personal trainer&nbsp;</label></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12"><input type="text" name="email" value="E-Mail" required=""></div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12"><input type="password" name="password" value="Password" required=""></div>
-            </div>
-        </div>
-    </div>
-    <h3>Address Information</h3>
-    <div></div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6"><input type="text" name="address" value="Adreess" autofocus=""></div>
-                <div class="col-md-6"><input type="tel" name="cellphone" value="Cell Phone" required=""></div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6"><input type="text" value="Postal Code" name="postal_code" required=""></div>
-                <div class="col-md-6"><input type="text" name="city" value="City" required=""></div>
-            </div>
-        </div>
-    </div> -->
-
-
+    <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
 
 {% endblock %}
