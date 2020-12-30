@@ -2,13 +2,13 @@
 {% block content %}
 
     <div class="container">
-        <div class="row center d-flex align-items-center myheight" style="height: 12em;">
+        <div class="row center d-flex align-items-center myheight myheader">
             <div class="col">
                 <h2>Registo</h2>
             </div>
         </div>
         
-        <div class="row center">
+        <div class="row center mymaincontent">
             <div class="col-md-12">
                 <!-- <h4 class="text-muted">User Information</h4> -->
                 <div class="row my-3">
@@ -65,7 +65,8 @@
                 </div>
             </div>
         </div>
-        <div class="row center align-items-center" style="margin-top: 6em;">
+
+        <div class="row center align-items-center mycta">
             <div class="col">
                 <a href="{{ url_for('index') }}"><button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
                 <a href="{{ url_for('signup2') }}"><button type="button" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button></a>
