@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
+general_email = ""
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -59,27 +60,34 @@ def signup2():
 
 @app.route('/signup', methods=['POST'])
 def signup_post():
-    email = request.form.get('email') 
+    # print("estou aqui!")
+    email = request.form.get('email')
+    general_email = email
     name = request.form.get('name')
     password = request.form.get('password')
     pt_code = request.form.get('pt_code')
+    pt_code = pt_code if pt_code != None else 0
+    # print(type(pt_code))
+    # print(pt_code)
+
     address = request.form.get('address')
     city = request.form.get('city')
     cell_phone = request.form.get('cell_phone') 
-    cell_phone = cell_phone if cell_phone != "" else 0
+    cell_phone = cell_phone if cell_phone != None else 0
 
     postal_code = request.form.get('postal_code')
+    
     #2a página
-    bday = request.form.get('bday')
+    # bday = request.form.get('bday')
 
-    weight = request.form.get('weight')
-    weight = weight if weight != "" else 0
+    # weight = request.form.get('weight')
+    # weight = weight if weight != "" else 0
 
-    height = request.form.get('height')
-    height = height if height != "" else 0
+    # height = request.form.get('height')
+    # height = height if height != "" else 0
 
-    obj = request.form.get('obj')
-    health_problems = request.form.get('health_problems')
+    # obj = request.form.get('obj')
+    # health_problems = request.form.get('health_problems')
     
     
     
@@ -90,13 +98,36 @@ def signup_post():
         return redirect(url_for('login'))
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code, address=address, city=city, cell_phone=cell_phone, postal_code=postal_code,bday=bday, weight=weight, height=height, obj=obj, health_problems=health_problems)
+    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code, address=address, city=city, cell_phone=cell_phone, postal_code=postal_code)
+
+    # bday=bday, weight=weight, height=height, obj=obj, health_problems=health_problems
+
     #new_user = User(id=0, email='', name='', password='', pt_code=0, address='', city='', cell_phone=0, postal_code=0,bday='', weight=0.0, height=0.0, obj='', health_problems='') 
     # add the new user to the database
     db.session.add(new_user)
     db.session.commit()
 
-    return redirect(url_for('login'))
+    if pt_code == 0:
+        return redirect(url_for('signup2'))
+    return redirect(url_for('profile'))
+
+@app.route('/signup2', methods=['POST'])
+def signup2_post():
+
+    bday = request.form.get('bday')
+    weight = request.form.get('weight')
+    weight = weight if weight != None else 0
+    height = request.form.get('height')
+    height = height if height != None else 0
+    obj = request.form.get('obj')
+    health_problems = request.form.get('health_problems')
+
+    user = User.query.filter_by(email=general_email).update({'bday': bday, 'weight': weight, 'height': heigth, 'obj': obj, 'health_problems': health_problems})
+
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
 
 @app.route('/logout')
 def logout():

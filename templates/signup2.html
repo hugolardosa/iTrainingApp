@@ -2,12 +2,13 @@
 {% block content %}
 
 <div class="container">
-    <div class="row center d-flex align-items-center myheight myheader">
-        <div class="col">
-            <h2>Dados Físicos</h2>
+    <form method="POST" action="/signup2" class="mymaincontent">
+        <div class="row center d-flex align-items-center myheight myheader">
+            <div class="col">
+                <h2>Dados Físicos</h2>
+            </div>
         </div>
-    </div>
-    <form class="mymaincontent">
+
         <div class="row">
             <div class="col">
                 <div class="row">
@@ -50,14 +51,14 @@
                 </div>
             </div>
         </div>
-    </form>
 
-    <div class="row center align-items-center mycta">
-        <div class="col">
-            <a href="{{ url_for('signup') }}"><button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
-            <a href="{{ url_for('signup2') }}"><button type="button" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button></a>
+        <div class="row center align-items-center mycta">
+            <div class="col">
+                <a href="{{ url_for('signup') }}"><button type="button" class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
+                <button type="submit" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 {% endblock %}
