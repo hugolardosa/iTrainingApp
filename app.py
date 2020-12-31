@@ -27,11 +27,11 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # Auth File
-@app.route('/login')
+@app.route('/')
 def login():
     return render_template('login.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/', methods=['POST'])
 def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -109,7 +109,7 @@ def signup_post():
 
     if pt_code == 0:
         return redirect(url_for('signup2'))
-    return redirect(url_for('profile'))
+    return redirect(url_for('login'))
 
 @app.route('/signup2', methods=['POST'])
 def signup2_post():
@@ -132,13 +132,13 @@ def signup2_post():
 
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 """
     new_user = User(id=0, email='', name='', password='', pt_code=0, address='', city='', cell_phone=0, postal_code=0,bday='', weight=0.0, height=0.0, obj='', health_problems='')
@@ -146,10 +146,6 @@ def logout():
     db.session.commit()
 """
 
-### Main Class
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/profile')
 def profile():

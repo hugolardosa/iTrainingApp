@@ -1,80 +1,79 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <div class="container">
-        <div class="row center d-flex align-items-center myheight myheader">
-            <div class="col">
-                <h2>Registo</h2>
-            </div>
+<div class="container">
+    <div class="row center d-flex align-items-center myheight myheader">
+        <div class="col">
+            <h2>Registo</h2>
         </div>
-        <form method="POST" action="/signup">
-            <div class="row center mymaincontent">
-                <div class="col-md-12">
-                    <!-- <h4 class="text-muted">User Information</h4> -->
-                    <div class="row my-3">
-                        <div class="col-md-6 offset-md-2">
-                            <input class="form-control" id="email" type="text" name="name" placeholder="Nome completo" required>
-                        </div>
-                        <div class="col-md-2">
-                            <input class="form-control" type="tel" name="cell_phone" placeholder="Telemovel" required>
-                        </div>
+    </div>
+    <form method="POST" action="/signup">
+        <div class="row center mymaincontent">
+            <div class="col-md-12">
+                <!-- <h4 class="text-muted">User Information</h4> -->
+                <div class="row my-3">
+                    <div class="col-md-6 offset-md-2">
+                        <input class="form-control" id="email" type="text" name="name" placeholder="Nome completo" required>
                     </div>
-
-                    <div class="row my-3">
-                        <div class="col-md-4 offset-md-2">
-                            <input class="form-control" type="email" name="email" placeholder="E-Mail" required>
-                        </div>
-                        <div class="col-md-4">
-                            <input class="form-control" type="password" name="password" placeholder="Password" required>
-                        </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="tel" name="cell_phone" placeholder="Telemovel" required>
                     </div>
+                </div>
 
-                    <div class="row my-3" style="height: 40px;">
-                        <div class="col-md-4 offset-md-2 d-flex align-items-center">
-                            <div class="pl-4">
-                                <input class="form-check-input" type="checkbox" id="checkPT">
-                                <label class="form-check-label text-secondary" for="defaultCheck2">
+                <div class="row my-3">
+                    <div class="col-md-4 offset-md-2">
+                        <input class="form-control" type="email" name="email" placeholder="E-Mail" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+
+                <div class="row my-3" style="height: 40px;">
+                    <div class="col-md-4 offset-md-2 d-flex align-items-center">
+                        <div class="pl-4">
+                            <input class="form-check-input" type="checkbox" id="checkPT">
+                            <label class="form-check-label text-secondary" for="defaultCheck2">
                                     Sou Personal Trainer
                                 </label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4" id="inputPT"> 
-                            <!-- <input class="form-control" type="text" name="pt_code" placeholder="PT code" required> -->
                         </div>
                     </div>
 
-                    <!-- <h4 class="text-muted">Address Information</h4> -->
-
-                    <div class="row my-3 mt-5">
-                        <div class="col-md-6 offset-md-2">
-                            <input class="form-control" type="text" name="address" placeholder="Morada" required>
-                        </div>
-                        <div class="col-md-2">
-                            <input class="form-control" type="text" name="Nporta" placeholder="No." required>
-                        </div>
+                    <div class="col-md-4" id="inputPT">
+                        <!-- <input class="form-control" type="text" name="pt_code" placeholder="PT code" required> -->
                     </div>
+                </div>
 
-                    <div class="row my-3">
-                        <div class="col-md-6 offset-md-2">
-                            <input class="form-control" type="text" name="cidade" placeholder="Cidade" required>
-                        </div>
-                        <div class="col-md-2">
-                            <input class="form-control" type="text" name="postal_code" placeholder="Codigo postal" required>
-                        </div>
+                <!-- <h4 class="text-muted">Address Information</h4> -->
+
+                <div class="row my-3 mt-5">
+                    <div class="col-md-6 offset-md-2">
+                        <input class="form-control" type="text" name="address" placeholder="Morada" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="Nporta" placeholder="No." required>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <div class="col-md-6 offset-md-2">
+                        <input class="form-control" type="text" name="cidade" placeholder="Cidade" required>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="postal_code" placeholder="Codigo postal" required>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row center align-items-center mycta">
-                <div class="col">
-                    <a href="{{ url_for('index') }}"></a><button class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
-                    <button type="submit" id="btn" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button>
-                </div>
+        <div class="row center align-items-center mycta">
+            <div class="col">
+                <a href="{{ url_for('login') }}"></a><button class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
+                <button type="submit" id="btn" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 
-    <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+<script src="{{ url_for('static', filename='js/logic.js') }}"></script>
 
 {% endblock %}
