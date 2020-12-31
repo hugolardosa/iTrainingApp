@@ -17,26 +17,19 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/logo.png') }}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/logo.png') }}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link">
-                        Home
-                    </a></li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item"><a href="{{ url_for('profile') }}" class="nav-link">
                         Profile
                     </a></li>
-                    {% endif %}
-                    {% if not current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link">
-                        Login
-                    </a></li>
+                    {% endif %} {% if not current_user.is_authenticated %}
                     <li class="nav-item"><a href="{{ url_for('signup') }}" class="nav-link">
                         Sign Up
                     </a></li>
-                    {% endif %}
-                    {% if current_user.is_authenticated %}
+                    {% endif %} {% if current_user.is_authenticated %}
                     <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">
                         Logout
                     </a></li>
@@ -47,9 +40,8 @@
     </nav>
     <!-- <div class="container full-height">
         <div class="row flex center v-center full-height"> -->
-            {% block content %}
-            {% endblock %}
-        <!-- </div>
+    {% block content %} {% endblock %}
+    <!-- </div>
     </div> -->
     <div></div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
