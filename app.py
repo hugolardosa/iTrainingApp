@@ -122,7 +122,13 @@ def signup2_post():
     obj = request.form.get('obj')
     health_problems = request.form.get('health_problems')
 
-    user = User.query.filter_by(email=general_email).update({'bday': bday, 'weight': weight, 'height': heigth, 'obj': obj, 'health_problems': health_problems})
+    user = User.query.filter_by(email=general_email).first()
+
+    user.bday = bday
+    user.weight = weight
+    user.height = height
+    user.obj = obj
+    user.health_problems = health_problems
 
     db.session.commit()
 
@@ -165,4 +171,21 @@ class User(UserMixin, db.Model):
     height = db.Column(db.Float) #cm
     obj = db.Column(db.String(1000))
     health_problems = db.Column(db.String(1000))
+
+    def __init__(self, email, password, name, pt_code, address, city, cell_phone, postal_code, bday="", weight=0, height=0, obj="", health_problems=""):
+        self.email = email
+        self.password = password
+        self.name = name
+        self.pt_code = pt_code
+        self.address = address
+        self.city = city
+        self.cell_phone = cell_phone
+        self.postal_code = postal_code
+        self.bday = bday
+        self.weight = weight
+        self.height = height
+        self.obj = obj
+        self.health_problems = health_problems
+
+
 
