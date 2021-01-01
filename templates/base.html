@@ -22,16 +22,18 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('profile') }}" class="nav-link">
-                        Profile
-                    </a></li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('profile') }}" class="nav-link active btn btn-primary btn-sm mr-3">
+                            O meu perfil   
+                        </a>
+                    </li>
                     {% endif %} {% if not current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('signup') }}" class="nav-link">
-                        Sign Up
+                    <li class="nav-item"><a href="{{ url_for('signup') }}" class="nav-link active btn btn-primary btn-sm mr-3">
+                        Registar
                     </a></li>
                     {% endif %} {% if current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">
-                        Logout
+                    <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link active btn btn-secondary btn-sm mr-3">
+                        Sair
                     </a></li>
                     {% endif %}
                 </ul>
@@ -43,7 +45,6 @@
     {% block content %} {% endblock %}
     <!-- </div>
     </div> -->
-    <div></div>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
 </body>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row center d-flex align-items-center myheight myheader">
+        <div class="col">
+            <h3>Os seu treinos agendados:</h3>
+        </div>
+    </div>
+    <div class="row center mymaincontent">
+        <div class="col-md-12">
+
+            <p>Name: <mark>{{current_user.name}}</mark></p>
+            <p>E-Mail: <mark>{{current_user.email}}</mark></p>
+            {% if current_user.pt_code != 0 %}
+            <p>Personal Trainer: <mark>{{current_user.pt_code}}</mark></p>
+            {% endif %}
+            <p>Address: <mark>{{current_user.address}}</mark></p>
+            <p>City: <mark>{{current_user.city}}</mark></p>
+            <p>Cell Phone: <mark>{{current_user.cell_phone}}</mark></p>
+            <p>Postal Code: <mark>{{current_user.postal_code}}</mark></p>
+            {% if current_user.pt_code == 0 %}
+            <p>Birthday: <mark>{{current_user.bday}}</mark></p>
+            <p>Weight: <mark>{{current_user.weight}}</mark> kg</p>
+            <p>Height: <mark>{{current_user.height}}</mark> cm</p>
+            <p>Objectives: <mark>{{current_user.obj}}</mark></p>
+            <p>Health Problems: <mark>{{current_user.health_problems}}</mark></p>
+            {% endif %} 
+        </div>
+    </div>
+{% endblock %}
