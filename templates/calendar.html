@@ -8,23 +8,19 @@
     </div>
     <div class="row center mymaincontent">
         <div class="col-md-12">
-
-            <p>Name: <mark>{{current_user.name}}</mark></p>
-            <p>E-Mail: <mark>{{current_user.email}}</mark></p>
-            {% if current_user.pt_code != 0 %}
-            <p>Personal Trainer: <mark>{{current_user.pt_code}}</mark></p>
+            {% if current_user.train_list == [] %}
+                <h5><b> O seu PT ainda não lhe criou um plano de treinos</b></h5>
+            {% else %}
+                {% for x in current_user.train_list %}
+                <hr>    
+                <p>Data -> { x.date }</p>
+                <ul>
+                    <li><b>{ x.name }</b></li>
+                    <li>  Duração: { x.name } </li>
+                    <li><a class="btn btn-primary bt-sm ml-1 rounded-pill">Realizar</a></li>
+                </ul>
+                {% endfor %}
             {% endif %}
-            <p>Address: <mark>{{current_user.address}}</mark></p>
-            <p>City: <mark>{{current_user.city}}</mark></p>
-            <p>Cell Phone: <mark>{{current_user.cell_phone}}</mark></p>
-            <p>Postal Code: <mark>{{current_user.postal_code}}</mark></p>
-            {% if current_user.pt_code == 0 %}
-            <p>Birthday: <mark>{{current_user.bday}}</mark></p>
-            <p>Weight: <mark>{{current_user.weight}}</mark> kg</p>
-            <p>Height: <mark>{{current_user.height}}</mark> cm</p>
-            <p>Objectives: <mark>{{current_user.obj}}</mark></p>
-            <p>Health Problems: <mark>{{current_user.health_problems}}</mark></p>
-            {% endif %} 
         </div>
     </div>
 {% endblock %}

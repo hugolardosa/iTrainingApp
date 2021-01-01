@@ -31,6 +31,6 @@
         "venv.bak{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/1e1a4fcb-aad5-4397-8912-c0ae7ff8b8c2/resourceGroups/iTr/providers/Microsoft.Web/sites/itraining-ams",
+    "appService.defaultWebAppToDeploy": "",
     "appService.deploySubpath": "."
 }

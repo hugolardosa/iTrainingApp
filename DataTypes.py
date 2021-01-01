@@ -34,10 +34,10 @@ class Trains:
         self.name = name
         self.date = date
         self.duration = duration
-        self.needed_objects = []
         self.exerc_list = []
 
 class Exercice:
     def __init__(self, action, times):
         self.action = action
         self.times = times
+        self.needed_objects = []

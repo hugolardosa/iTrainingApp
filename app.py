@@ -9,7 +9,7 @@ demo_pt = Pt(email="p@p", name="Demo Pt", password=generate_password_hash("123",
 
 users = [demo_cl, demo_pt]
 print(users)
-# heheh
+
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 
@@ -51,17 +51,15 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-    return redirect(url_for('profile'))
+    
+    # if it's a client then go to the calendar page
+    if user.pt_code == 0:
+        return redirect(url_for('calendar'))
 
 
 @app.route('/signup')
 def signup():
     return render_template('New_SignUp.html')
-
-# @app.route('/signup2')
-# def signup2():
-#     return render_template('signup2.html')
-
 
 @app.route('/signup', methods=['POST'])
 def signup_post():
@@ -84,28 +82,20 @@ def signup_post():
     height = request.form.get('height')
     obj = request.form.get('obj')
     health_problems = request.form.get('health_problems')
-    
-    
-    
+
+
     user = next((x for x in users if x.email == email), None)  # if this returns a user, then the email already exists in database
 
     if user != None: # if a user is found, we want to redirect back to signup page so user can try again
         flash('Email address already exists')
         return redirect(url_for('login'))
-
-    # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-    # new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code, address=address, city=city, cell_phone=cell_phone, postal_code=postal_code)
-
-    # bday=bday, weight=weight, height=height, obj=obj, health_problems=health_problems
-
-    #new_user = User(id=0, email='', name='', password='', pt_code=0, address='', city='', cell_phone=0, postal_code=0,bday='', weight=0.0, height=0.0, obj='', health_problems='') 
-    # add the new user to the database
-    #db.session.add(new_user)
-    #db.session.commit()
-
+    
+    # if it's a client append to list
+    # # else is a PT, append to user lists
     if pt_code == 0:
         users.append(Client(email, name, generate_password_hash(password, method='sha256'), address, city, cell_phone, postal_code, bday, weight, height, obj, health_problems))
-    users.append(Pt(email, name, generate_password_hash(password, method='sha256'), pt_code, address, city, cell_phone, postal_code))
+    else:
+        users.append(Pt(email, name, generate_password_hash(password, method='sha256'), pt_code, address, city, cell_phone, postal_code))
     
     return redirect(url_for('login'))
 
@@ -114,41 +104,14 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-"""
-    new_user = User(id=0, email='', name='', password='', pt_code=0, address='', city='', cell_phone=0, postal_code=0,bday='', weight=0.0, height=0.0, obj='', health_problems='')
-    db.session.add(new_user)
-    db.session.commit()
-"""
-
 
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
 
-
-
-
-
-
-# class User(UserMixin, db.Model):
-#     _tablename_ = 'user'
-#     id = db.Column(db.Integer, db.Sequence('user_id_seq') ,primary_key=True, autoincrement=True) # primary keys are required by SQLAlchemy
-#     email = db.Column(db.String(100), unique=True)
-#     password = db.Column(db.String(100))
-#     name = db.Column(db.String(1000))
-#     pt_code = db.Column(db.String(1000))
-#     address = db.Column(db.String(1000))
-#     city = db.Column(db.String(100))
-#     cell_phone = db.Column(db.Integer)
-#     postal_code = db.Column(db.String(1000))
-#     #2a página
-#     bday = db.Column(db.String(10)) #dd-mm-aaaa
-#     weight = db.Column(db.Float) #kg
-#     height = db.Column(db.Float) #cm
-#     obj = db.Column(db.String(1000))
-#     health_problems = db.Column(db.String(1000))
-#     client_id = Column(Integer, ForeignKey('client.id'))
-#     client = relationship("Client", backref=backref("client", uselist=False)
+@app.route('/calendar')
+def calendar():
+    return render_template('calendar.html')
 
         
     
