@@ -100,13 +100,12 @@ def signup_post():
     else:
         users.append(Pt(email, name, generate_password_hash(password, method='sha256'), pt_code, address, city, cell_phone, postal_code))
     
-    return redirect(url_for('login'))
+    return redirect(url_for('mensalidade'))
 
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
 
 @app.route('/profile')
 def profile():
@@ -119,6 +118,10 @@ def calendar():
 @app.route('/myclients')
 def my_clients():
     return "My clients page, coming soon"
+
+@app.route('/mensalidade')
+def mensalidade():
+    return render_template('mensalidade.html')
 
         
     

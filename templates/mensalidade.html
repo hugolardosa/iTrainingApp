@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row center d-flex align-items-center" style="height: 20vh;">
+        <div class="col">
+            <h2>Mensalidade</h2>
+        </div>
+    </div>
+    <div class="row center" style="height: 40vh;">
+        <div class="col-md-6 d-flex flex-column justify-content-around">
+            <div class="card">
+                <div class="d-flex justify-content-around card-body mycard">
+                    <h5 class="card-title">1 mês</h5>
+                    <p class="card-text">9,99 euros</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="d-flex justify-content-around card-body mycard">
+                    <h5 class="card-title">3 meses</h5>
+                    <p class="card-text">19,99 euros</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="d-flex justify-content-around card-body mycard">
+                    <h5 class="card-title">1 ano</h5>
+                    <p class="card-text">49,99 euros</p>
+                </div>
+            </div>          
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <img src="{{ url_for('static', filename='img/bag-147782.svg') }}" alt="money bag" style="height: 200px; width: 200px;">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
