@@ -13,12 +13,10 @@
             {% else %}
                 {% for x in current_user.train_list %}
                 <hr>    
-                <p>Data -> { x.date }</p>
-                <ul>
-                    <li><b>{ x.name }</b></li>
-                    <li>  Duração: { x.name } </li>
-                    <li><a class="btn btn-primary bt-sm ml-1 rounded-pill">Realizar</a></li>
-                </ul>
+                <p>Data -> {{ x.date }}</p>
+                    <p><b>{{ x.name }}</b></p>
+                    <p>  Duração: {{ x.duration }} minutos </p>
+                    <a class="btn btn-primary bt-sm ml-1 rounded-pill">Realizar</a>
                 {% endfor %}
             {% endif %}
         </div>

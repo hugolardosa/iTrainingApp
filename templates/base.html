@@ -38,12 +38,6 @@
                     {% endif %} 
                     {% endif %} 
                     
-                    {% if not current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('signup') }}" class="nav-link active btn btn-primary btn-sm mr-3">
-                        Registar
-                    </a></li>
-                    {% endif %} 
-                    
                     {% if current_user.is_authenticated %}
                     <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link active btn btn-secondary btn-sm mr-3">
                         Sair

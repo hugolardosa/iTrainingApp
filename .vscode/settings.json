@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/hugo/Desktop/iTrainingApp/venv/bin/python3.9",
+    "python.pythonPath": "venv/bin/python",
     "appService.zipIgnorePattern": [
         "__pycache__{,/**}",
         "*.py[cod]",
@@ -31,6 +31,6 @@
         "venv.bak{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/1e1a4fcb-aad5-4397-8912-c0ae7ff8b8c2/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/itraining-ams",
     "appService.deploySubpath": "."
 }

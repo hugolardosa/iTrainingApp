@@ -4,10 +4,13 @@ from flask_login import LoginManager, UserMixin, login_required, current_user, l
 from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
 
-demo_cl = Client(email="c@c", name="Demo Cliente", password=generate_password_hash("123", method='sha256'), address="Client Demo Address", city="Client Demo City", cell_phone="c1c1c1c1", postal_code="client postal_code", bday="Cl bday", weight="CL weight", height="height", obj="obj", health_problems="I'm helpless")
-demo_pt = Pt(email="p@p", name="Demo Pt", password=generate_password_hash("123", method='sha256'), pt_code="!THE_PT_CODE_123!", address="PT Demo Address", city="pT Demo City", cell_phone="p9191919", postal_code="pt postal_code")
+demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'), address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555", bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
+demo_pt = Pt(email="cc@gmail.com", name="Calisto Comum", password=generate_password_hash("123", method='sha256'), pt_code="!THE_PT_CODE_123!", address="Rua dos ovos moles", city="Aveiro", cell_phone="919191911", postal_code="2330-555")
+demo_cl2 = Client(email="roberto@gmail.com", name="Roberto", password=generate_password_hash("123", method='sha256'), address="Bairro do liceu", city="Aveiro", cell_phone="911222333", postal_code="2330-555", bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
+demo_cl2.train_list = [Trains("Braços", "1-12-2000", "20", [Exercice("Elevações na cadeira", "10"), Exercice("Pino", "50"), Exercice("Cambalhotas", "30")]), Trains("Braços", "1-12-2000", "20", [Exercice("Elevações na cadeira", "10"), Exercice("Pino", "50"), Exercice("Cambalhotas", "30")])]
 
-users = [demo_cl, demo_pt]
+
+users = [demo_cl, demo_pt, demo_cl2]
 print(users)
 
 # init SQLAlchemy so we can use it later in our models
@@ -55,8 +58,9 @@ def login_post():
     # if it's a client then go to the calendar page
     if user.pt_code == 0:
         return redirect(url_for('calendar'))
-
-
+    else:
+        return redirect(url_for('my_clients'))
+    
 @app.route('/signup')
 def signup():
     return render_template('New_SignUp.html')
@@ -112,6 +116,10 @@ def profile():
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
+
+@app.route('/myclients')
+def my_clients():
+    return "My clients page, coming soon"
 
         
     

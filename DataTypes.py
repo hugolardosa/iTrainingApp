@@ -30,11 +30,11 @@ class Pt(User):
         self.client_id = 0
         self.pt_code = pt_code 
 class Trains:
-    def __init__(self, name, date, duration):
+    def __init__(self, name, date, duration, exerc_list=[]):
         self.name = name
         self.date = date
         self.duration = duration
-        self.exerc_list = []
+        self.exerc_list = exerc_list
 
 class Exercice:
     def __init__(self, action, times):

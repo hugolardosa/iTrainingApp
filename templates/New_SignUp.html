@@ -1,13 +1,13 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="container">
-    <div class="row center d-flex align-items-center myheight myheader">
+    <div class="row center d-flex align-items-center">
         <div class="col">
             <h2>Registo</h2>
         </div>
     </div>
     <form method="POST" action="/signup">
-        <div class="row center mymaincontent">
+        <div class="row center">
             <div class="col-md-12">
                 <!-- <h4 class="text-muted">User Information</h4> -->
                 <div class="row my-3">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div id="clientDiv">
-                    <div class="row center d-flex align-items-center myheight myheader">
+                    <div class="row center d-flex align-items-center">
                         <div class="col">
                             <h2>Dados Físicos</h2>
                         </div>
@@ -75,13 +75,13 @@
                                 <div class="col-md-4 offset-md-2">
                                     <div class="form-group">
                                         <label for="dnasc">Data de Nascimento:</label>
-                                        <input type="text" class="form-control" id="dnasc" placeholder="dd-mm-aaaa">
+                                        <input type="date" class="form-control" id="dnasc" placeholder="dd-mm-aaaa" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="peso">Peso:</label>
-                                        <input type="text" class="form-control" id="peso" placeholder="kg">
+                                        <input type="text" class="form-control" id="peso" placeholder="g">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -114,10 +114,10 @@
                 </div>
             </div>
         </div>
-        <div class="row center align-items-center mycta">
+        <div class="row center align-items-center">
             <div class="col">
-                <a href="{{ url_for('login') }}"></a><button class="btn btn-primary btn-lg mr-4 rounded-pill" style="width: 140px;">Retroceder</button></a>
-                <button type="submit" id="btn" class="btn btn-primary btn-lg ml-4 rounded-pill" style="width: 140px;">Seguinte</button>
+                <a href="{{ url_for('login') }}" class="btn btn-primary ml-4 rounded-pill">Retroceder</a>
+                <button type="submit" id="btn" class="btn btn-primary ml-4 rounded-pill">Seguinte</button>
             </div>
         </div>
     </form>
