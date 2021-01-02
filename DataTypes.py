@@ -35,6 +35,7 @@ class Trains:
         self.date = date
         self.duration = duration
         self.exerc_list = exerc_list
+        self.done = False
 
 class Exercice:
     def __init__(self, action, times):
