@@ -1,19 +1,38 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h1>Your personal information </h1>
-<p>Name: {{current_user.name}}</p>
-<p>E-Mail: {{current_user.email}}</p>
-{% if current_user.pt_code != "" %}
-<p>Personal Trainer: {{current_user.pt_code}}</p>
-{% endif %}
-<p>Address: {{current_user.address}}</p>
-<p>City: {{current_user.city}}</p>
-<p>Cell Phone: {{current_user.cell_phone}}</p>
-<p>Postal Code: {{current_user.postal_code}}</p>
-<p>Birthday: {{current_user.bday}}</p>
-<p>Weight: {{current_user.weight}} kg</p>
-<p>Height: {{current_user.height}} cm</p>
-<p>Objectives: {{current_user.obj}}</p>
-<p>Health Problems: {{current_user.health_problems}}</p>
+<div class="container">
+    <div class="row center d-flex align-items-center myheight myheader">
+        <div class="col">
+
+            {% if current_user.pt_code == 0 %}
+            <h3>Welcome cliente {{current_user.name}}!</h1>
+            {% endif %}
+
+            {% if current_user.pt_code != 0 %}
+            <h3>Welcome PT {{current_user.name}}!</h1>
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="row center mymaincontent">
+        <div class="col-md-12">
+
+            <p>Nome: <mark>{{current_user.name}}</mark></p>
+            <p>E-Mail: <mark>{{current_user.email}}</mark></p>
+            {% if current_user.pt_code != 0 %}
+            <p>Código de PT: <mark>{{current_user.pt_code}}</mark></p>
+            {% endif %}
+            <p>Morada: <mark>{{current_user.address}}</mark></p>
+            <p>Cidade: <mark>{{current_user.city}}</mark></p>
+            <p>Telefone: <mark>{{current_user.cell_phone}}</mark></p>
+            <p>Codigo Postal: <mark>{{current_user.postal_code}}</mark></p>
+            {% if current_user.pt_code == 0 %}
+            <p>Aniversário: <mark>{{current_user.bday}}</mark></p>
+            <p>Peso: <mark>{{current_user.weight}}</mark> kg</p>
+            <p>Altura: <mark>{{current_user.height}}</mark> cm</p>
+            <p>Objetivos: <mark>{{current_user.obj}}</mark></p>
+            <p>Problemas de Saúde: <mark>{{current_user.health_problems}}</mark></p>
+            {% endif %} 
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row center d-flex align-items-center myheight myheader">
+        <div class="col">
+            <h3>Os seu treinos agendados:</h3>
+        </div>
+    </div>
+    <div class="row center mymaincontent">
+        <div class="col-md-12">
+            <div id="mainExercice">
+            {% if current_user.train_list == [] %}
+                <h5><b> O seu PT ainda não lhe criou um plano de treinos</b></h5>
+            {% else %}
+                {% for x in current_user.train_list %}
+                
+                <hr>    
+                <p>Data -> {{ x.date }}</p>
+                    <p><b>{{ x.name }}</b></p>
+                    <p>  Duração: {{ x.duration }} minutos </p>
+                    {% if not x.done %}
+                        <a class="btn btn-primary bt-sm ml-1 rounded-pill" onclick="doExercice( {{ x.exerc_list }} )">Realizar</a>
+                    {% else %}
+                        <a class="btn btn-secondary bt-sm ml-1 rounded-pill">Realizar</a>
+                    {% endif %}                
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div id="exPg">
+            
+        </div>
+    </div>
+    </div>
+    <script>
+        function doExercice(exerc_list){
+            var nextEx = document.getElementById("mainExercice");
+            nexEx.style.display = "block";
+
+            var nextEx = document.getElementById("exPg");
+            nexEx.style.display = "none";
+
+        }
+    </script>
+{% endblock %}
