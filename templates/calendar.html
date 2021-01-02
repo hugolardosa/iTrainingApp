@@ -19,26 +19,22 @@
                     <p><b>{{ x.name }}</b></p>
                     <p>  Duração: {{ x.duration }} minutos </p>
                     {% if not x.done %}
-                        <a class="btn btn-primary bt-sm ml-1 rounded-pill" onclick="doExercice( {{ x.exerc_list }} )">Realizar</a>
+                        <a class="btn btn-primary bt-sm ml-1 rounded-pill" href="train?id={{ loop.index - 1 }}">Realizar</a>
                     {% else %}
                         <a class="btn btn-secondary bt-sm ml-1 rounded-pill">Realizar</a>
-                    {% endif %}                
+                    {% endif %}          
                 {% endfor %}
             {% endif %}
         </div>
-        <div id="exPg">
-            
-        </div>
     </div>
     </div>
-    <script>
+    <!-- <script>
         function doExercice(exerc_list){
-            var nextEx = document.getElementById("mainExercice");
-            nexEx.style.display = "block";
-
-            var nextEx = document.getElementById("exPg");
-            nexEx.style.display = "none";
-
+            var mainExercice = document.getElementById("mainExercice");
+            mainExercice.style.display = "none";
+            
+            var exPg = document.getElementById("exPg");
+            exPg.style.display = "block";
         }
-    </script>
+    </script> -->
 {% endblock %}

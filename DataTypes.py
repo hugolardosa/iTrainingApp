@@ -27,8 +27,9 @@ class Client(User):
 class Pt(User):
     def __init__(self, email, name, password, pt_code, address, city, cell_phone, postal_code):
         super().__init__(email, name, password, address, city, cell_phone, postal_code)
-        self.client_id = 0
+        self.client_id = []
         self.pt_code = pt_code 
+
 class Trains:
     def __init__(self, name, date, duration, exerc_list=[]):
         self.name = name
@@ -42,3 +43,7 @@ class Exercice:
         self.action = action
         self.times = times
         self.needed_objects = []
+
+class Utils:
+    def getAlltype(lista, ty="Pt"):
+        return [ x for x in lista if isinstance(x, ty) ]

@@ -4,6 +4,7 @@ from flask_login import LoginManager, UserMixin, login_required, current_user, l
 from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
 
+## 
 demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'), address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555", bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
 demo_pt = Pt(email="cc@gmail.com", name="Calisto Comum", password=generate_password_hash("123", method='sha256'), pt_code="!THE_PT_CODE_123!", address="Rua dos ovos moles", city="Aveiro", cell_phone="919191911", postal_code="2330-555")
 demo_cl2 = Client(email="roberto@gmail.com", name="Roberto", password=generate_password_hash("123", method='sha256'), address="Bairro do liceu", city="Aveiro", cell_phone="911222333", postal_code="2330-555", bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
@@ -115,6 +116,13 @@ def profile():
 def calendar():
     return render_template('calendar.html')
 
+@app.route('/train')
+def train():
+    train_id = int(request.args.get("id"))
+    current_user.train_list[train_id].done = True
+    return render_template('train.html', exs=current_user.train_list[train_id].exerc_list, time=current_user.train_list[train_id].duration)
+
+
 @app.route('/myclients')
 def my_clients():
     return "My clients page, coming soon"
@@ -129,4 +137,3 @@ def local():
 
 
         
-    

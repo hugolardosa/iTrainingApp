@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <!-- <div class="row center d-flex align-items-center myheight myheader">
+        <div class="col">
+            <h3>Os seu treinos agendados:</h3>
+        </div>
+    </div> -->
+    <div class="row center">
+        <h2>Duração: {{ time }} minutos </h2>
+        <div class="col-md-12">
+            {% for x in exs %}
+                <p> {{ x.action }} - Repetir {{ x.times }} </p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

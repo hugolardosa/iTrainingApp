@@ -23,25 +23,25 @@
                 <ul class="nav navbar-nav ml-auto">
 
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{{ url_for('profile') }}" class="nav-link active btn btn-primary btn-sm mr-3">
-                            O meu perfil   
-                        </a>
-                    </li>
-                    <!-- If the User is a Client-->
-                    {% if current_user.pt_code == 0%}
-                    <li class="nav-item">
-                        <a href="{{ url_for('calendar') }}" class="nav-link active btn btn-primary btn-sm mr-3">
-                            O meu calendário de treinos  
-                        </a>
-                    </li>
-                    {% endif %} 
+                        <li class="nav-item">
+                            <a href="{{ url_for('profile') }}" class="nav-link active btn btn-primary btn-sm mr-3">
+                                O meu perfil   
+                            </a>
+                        </li>
+                            <!-- If the User is a Client-->
+                            {% if current_user.pt_code == 0 %}
+                            <li class="nav-item">
+                                <a href="{{ url_for('calendar') }}" class="nav-link active btn btn-primary btn-sm mr-3">
+                                    O meu calendário de treinos  
+                                </a>
+                            </li>
+                            {% endif %} 
                     {% endif %} 
                     
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link active btn btn-secondary btn-sm mr-3">
-                        Sair
-                    </a></li>
+                        <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link active btn btn-secondary btn-sm mr-3">
+                            Sair
+                        </a></li>
                     {% endif %}
                 </ul>
             </div>
