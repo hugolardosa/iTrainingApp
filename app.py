@@ -123,5 +123,10 @@ def my_clients():
 def mensalidade():
     return render_template('mensalidade.html')
 
+@app.route('/local')
+def local():
+    return render_template('local.html')
+
+
         
     

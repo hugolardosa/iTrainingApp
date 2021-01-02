@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row center d-flex align-items-center myheader">
+        <div class="col">
+            <h2>Onde prefere treinar?</h2>
+        </div>
+    </div>
+    <div class="row center justify-content-around">
+        <div class="d-flex flex-column justify-content-center">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="ginasios" value="option1">
+            <label class="form-check-label mylabel" for="exampleRadios1">
+                Ginásios
+            </label>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="casaArlivre" value="option2">
+            <label class="form-check-label mylabel" for="exampleRadios2">
+                Casa / Ar livre
+            </label>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

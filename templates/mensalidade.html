@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
-    <div class="row center d-flex align-items-center" style="height: 20vh;">
+    <div class="row center d-flex align-items-center myheader">
         <div class="col">
             <h2>Mensalidade</h2>
         </div>
@@ -28,6 +28,12 @@
         </div>
         <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ url_for('static', filename='img/bag-147782.svg') }}" alt="money bag" style="height: 200px; width: 200px;">
+        </div>
+    </div>
+    <div class="row center align-items-center" style="height: 20vh;">
+        <div class="col">
+            <a href="{{ url_for('login') }}" class="btn btn-primary ml-4 rounded-pill">Retroceder</a>
+            <a href="{{ url_for('local') }}"class="btn btn-primary ml-4 rounded-pill">Seguinte</a>
         </div>
     </div>
 </div>
