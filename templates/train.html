@@ -6,12 +6,49 @@
             <h3>Os seu treinos agendados:</h3>
         </div>
     </div> -->
-    <div class="row center">
-        <h2>Duração: {{ time }} minutos </h2>
+    <div class="row center" >
+        <h2>Tempo restante: <span id="demo"></span> </h2>
         <div class="col-md-12">
             {% for x in exs %}
                 <p> {{ x.action }} - Repetir {{ x.times }} </p>
             {% endfor %}
         </div>
     </div>
+    <script>
+        //
+        console.log("hello");
+        setTimeout(timeOut, parseInt({{time}}) * 60000);
+        function timeOut(){
+            console.log("done");
+            window.location.href="calendar";
+        }
+
+
+
+        // Set the date we're counting down to
+var countDownDate = new Date().setTime(new Date().getTime() + parseInt({{time}}) * 60000);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and second
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Acabou";
+  }
+}, 1000);
+    </script>
 {% endblock %}
