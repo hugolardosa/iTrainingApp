@@ -35,7 +35,12 @@
                                     O meu calendário de treinos  
                                 </a>
                             </li>
+                            
+                            <!-- If the user is a PT -->
+                            {% else %}
+
                             {% endif %} 
+
                     {% endif %} 
                     
                     {% if current_user.is_authenticated %}
@@ -49,7 +54,8 @@
     </nav>
     <!-- <div class="container full-height">
         <div class="row flex center v-center full-height"> -->
-    {% block content %} {% endblock %}
+    {% block content %} 
+    {% endblock %}
     <!-- </div>
     </div> -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
