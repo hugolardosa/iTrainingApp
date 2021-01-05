@@ -1,41 +1,70 @@
-{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html>
 
-<div class="container">
-    <div class="row center d-flex align-items-center myheight myheader">
-        <div class="col">
-            <h2>Bem vindo à aplicação iTraining</h2>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <!-- Favicons -->
+    <link href="../static/img/favicon.png" rel="icon">
+    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='https://fonts.googleapis.com/css?family=Raleway') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Footer-Basic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gradient-navbar-1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gradient-navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login-form-1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login-form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row myrow">
+            <div class="col-md-8 d-flex flex-column justify-content-center align-items-center myimg px-0">
+                <div class="" style="background-color: blue; width: 100%;">
+                    <img id="principalimg" src="../static/img/ginasticafitlink.png" alt="exercise">
+                </div>
+            </div>
+            <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
+                <form method="POST" action="/">
+                    <div class="row d-flex flex-column justify-content-center align-items-center mymaincontent">
+                        <div class="col" style="width: 22em;">
+                            <!-- <h4 class="text-muted">User Information</h4> -->
+                            <div class="row my-3">
+                                <input class="form-control" id="email" type="email" name="email" placeholder="O seu E-Mail" required>
+                            </div>
+                
+                            <div class="row my-3">
+                                <input class="form-control" type="password" name="password" placeholder="Password" required>
+                            </div>
+                
+                            <div class="row my-3">
+                                    <input class="form-check-input" type="checkbox" id="checkMe">
+                                    <label class="form-check-label text-secondary" for="defaultCheck2">
+                                                    Lembrar-se dos dados de Login?
+                                                </label>
+                            </div>
+                        
+                
+                            <div class="row center mt-5">
+                                <div class="col">
+                                    <button type="submit" id="btn" class="btn btn-primary ml-1 rounded-pill">Entrar</button>
+                                    <a href="{{ url_for('signup') }}" class="btn btn-primary  ml-1 rounded-pill">Registar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <form method="POST" action="/">
-        <div class="row center mymaincontent">
-            <div class="col-md-12">
-                <!-- <h4 class="text-muted">User Information</h4> -->
-                <div class="row my-3">
-                    <input class="form-control" id="email" type="email" name="email" placeholder="O seu E-Mail" required>
-                </div>
-
-                <div class="row my-3">
-                    <input class="form-control" type="password" name="password" placeholder="Password" required>
-                </div>
-
-                <div class="row my-3">
-                    <input class="form-check-input" type="checkbox" id="checkMe">
-                    <label class="form-check-label text-secondary" for="defaultCheck2">
-                                    Lembrar-se dos dados de Login?
-                                </label>
-                </div>
-            </div>
-
-            <div class="row center align-items-center mycta">
-                <div class="col">
-                    <button type="submit" id="btn" class="btn btn-primary ml-1 rounded-pill">Entrar</button>
-                    <a href="{{ url_for('signup') }}" class="btn btn-primary  ml-1 rounded-pill">Registar</a>
-                </div>
-            </div>
-    </form>
-
     </div>
 
     <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
 
-    {% endblock %}
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>
