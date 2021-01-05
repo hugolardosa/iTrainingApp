@@ -64,7 +64,7 @@ def signup_post():
     # print("estou aqui!")
     email = request.form.get('email')
     name = request.form.get('name')
-    password = request.form.get('password')
+    paseditProfsword = request.form.get('password')
     pt_code = request.form.get('pt_code')
     pt_code = 0 if pt_code == "" else pt_code
     # print(type(pt_code))
@@ -102,6 +102,10 @@ def logout():
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
+
+@app.route('/editProfile_Client')
+def editProfile_Client():
+    return render_template('editProfile_Client.html')
 
 @app.route('/calendar')
 def calendar():
