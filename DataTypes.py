@@ -23,12 +23,17 @@ class Client(User):
         self.pt_id = 0
         self.train_list = [] 
         self.pt_code = 0 
-
+    
+    def __str__(self):
+        return "Client name: " + self.name  + "email "  + self.email  + "city: "  + self.city  +  "obj: "  + self.obj  + " problems: "  + self.health_problems
 class Pt(User):
     def __init__(self, email, name, password, pt_code, address, city, cell_phone, postal_code):
         super().__init__(email, name, password, address, city, cell_phone, postal_code)
         self.client_id = []
-        self.pt_code = pt_code 
+        self.pt_code = pt_code
+    
+    def __str__(self):
+        return "Pt name: " + self.name  + "email "  + self.email  + "city: "  + self.city  +  "obj: "  + self.obj  + " problems: "  + self.health_problems
 
 class Trains:
     def __init__(self, name, date, duration, exerc_list=[]):
