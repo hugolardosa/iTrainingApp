@@ -5,23 +5,52 @@
             <h2>Onde prefere treinar?</h2>
         </div>
     </div>
-    <div class="row center justify-content-around">
-        <div class="d-flex flex-column justify-content-center">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="ginasios" value="option1">
-            <label class="form-check-label mylabel" for="exampleRadios1">
+    <div class="row center">
+        <div class="col-md-6">
+            <input class="form-check-input" name="exampleRadios" type="radio" id="ginasios" value="option1">
+            <label class="form-check-label mylabel" for="ginasios">
                 Ginásios
             </label>
         </div>
-        <div class="d-flex flex-column justify-content-center">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="casaArlivre" value="option2">
-            <label class="form-check-label mylabel" for="exampleRadios2">
+        <div class="col-md-6">
+            <input class="form-check-input" name="exampleRadios" type="radio" id="casaArlivre" value="option2">
+            <label class="form-check-label mylabel" for="casaArlivre">
                 Casa / Ar livre
             </label>
         </div>
     </div>
-    <div class="row center align-items-center mycta">
-        <div class="col">
-            <a href="{{ url_for('login') }}" class="btn btn-primary  ml-1 rounded-pill">Concluir</a>
+    <div class="row center mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="my-3">
+                    <div class="card-body">
+                        Em que zona vive?
+                    </div>
+                    <form class="form my-2 my-lg-0 d-flex justify-content-center">
+                        <input class="form-control" type="search" placeholder="Search" style="width: 15em;">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="my-3">
+                    <div class="card-body">
+                        Tem material de exercício em casa?
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div class="">
+                            <input class="form-check-input" name="sbtn" type="radio" id="sbtn1" value="option1">
+                            <label class="form-check-label" for="sbtn1">Sim</label>
+                        </div>
+                        <div class="">
+                            <input class="form-check-input" name="nbtn" type="radio" id="nbtn1" value="option2">
+                            <label class="form-check-label" for="nbtn1">Não</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
