@@ -130,5 +130,10 @@ def mensalidade():
 def local():
     return render_template('local.html')
 
+@app.route('/addtrain')
+def add_train():
+    return render_template('addtrain.html')
+
+
 
         
