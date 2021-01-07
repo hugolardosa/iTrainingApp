@@ -9,8 +9,8 @@
     <form method="POST" action="/editProfile_Client">
         <div class="row center">
             <div class="col-md-12">
-                <div class="row my-3">
-                    <div class="col-md-4 offset-md-2">
+                <div class="row my-3 mt-3">
+                    <div class="col-md-6 offset-md-2"> <!--<div class="col-md-4 offset-md-2">-->
                         <label for="cell_phone">Email:</label>
                         <input class="form-control" type="email" name="email" placeholder= {{current_user.email}}>
                     </div> 
@@ -18,60 +18,67 @@
                         <label for="cell_phone">Numero de Telefone:</label>
                         <input class="form-control" type="tel" name="cell_phone" placeholder={{current_user.cell_phone}}>
                     </div>
-                    <div class="col-md-2">
-                        <label for="password">Password:</label>
-                        <input class="form-control" type="password" name="password" placeholder="o que esta defenido">
-                    </div>
+                    <!-- 
+                        <div class="col-md-2">
+                            <label for="password">Password:</label>
+                            <input class="form-control" type="password" name="password" placeholder="o que esta defenido">
+                        </div>
+                    -->
+                    
                 </div>
                 
-                <div class="row my-3 mt-5">
-                    <div class="col-md-6 offset-md-2">
+                <div class="row my-3 mt-3">
+                    <div class="col-md-8 offset-md-2"> <!--<div class="col-md-4 offset-md-2">-->
                         <div class="form-group">
                             <label for="address">Morada:</label>
                             <input class="form-control" type="text" name="address" placeholder={{current_user.address}}>
                         </div>
                     </div>
+
+                    <!--   
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="Nporta">No.:</label>
                             <input class="form-control" type="text" name="Nporta" placeholder="PREdefinido">
                         </div>
                     </div>
+                    -->
                 </div>
 
-                <div class="row my-3 mt-5">
+                <div class="row my-3 mt-3">
                     <div class="col-md-6 offset-md-2">
                         <div class="form-group">
                             <label for="city">Cidade:</label>
                             <input class="form-control" type="text" name="city" placeholder={{current_user.city}}>
                         </div>
                     </div>
+
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="postal_code">Codigo de postal:</label>
-                            <input class="form-control" type="text" name="postal_code" placeholder={{current_user.postal_code}}>
+                            <input class="form-control" type="text" name="postal_code" placeholder={{current_user.postal_code}} >
                         </div>
                     </div>
                 </div>
 
-                <div class="row my-3 mt-5">
-                    <div class="col-md-2 offset-md-4">
+                <div class="row my-3 mt-3">
+                    <div class="col-md-4 offset-md-2">
                         <div class="form-group">
                             <label for="weight">Peso:</label>
-                            <input type="text" class="form-control" name="weight" placeholder={{current_user.weight}}>
-                            <label for="weight">kg</label>
+                            <input type="text" class="form-control" name="weight" placeholder={{current_user.weight}}kg>
                         </div>
+                        
                     </div>
-                    <div class="col-md-2">
+
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="height">Altura:</label>
-                            <input type="text" class="form-control" name="height" placeholder={{current_user.height}}>
-                            <label for="height">cm</label>
+                            <input type="text" class="form-control" name="height" placeholder={{current_user.height}}cm>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row my-3 mt-3">
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
                             <label for="obj">Objectivos:</label>
@@ -80,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row my-3 mt-3">
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
                             <label for="health_problems">Problemas de saúde/Limitações físicas:</label>
@@ -88,8 +95,6 @@
                         </div>
                     </div>
                 </div>
-                
-               
             </div>
         </div>
         <div class="row center align-items-center">
