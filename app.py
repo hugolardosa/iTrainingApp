@@ -79,7 +79,7 @@ def signup_post():
     pt_code = request.form.get('pt_code')
     pt_code = 0 if pt_code == "" else pt_code
     # print(type(pt_code))
-    address = request.form.get('address') + request.form.get('Nporta')
+    address = request.form.get('address') + " Nº " + request.form.get('Nporta')
     city = request.form.get('city')
     cell_phone = request.form.get('cell_phone')
     postal_code = request.form.get('postal_code')
@@ -125,6 +125,17 @@ def profile():
 def editProfile_Client():
     return render_template('editProfile_Client.html')
 
+@app.route('/editProfile_Client', methods=['POST'])
+def editProfile_Client_post():
+    ## A FAZER: Ir buscar todos os campos
+
+    for i in range(0,len(users)):
+        #ao encontrar o id
+        if users[i].id == current_user.id:
+           #users[i].email = #var do email
+           # fazer para todos
+            break
+    return redirect(url_for('profile'))
 
 @app.route('/calendar')
 def calendar():
@@ -168,7 +179,7 @@ def set_pt():
         users[-1].pt_id = pt_code
         return redirect(url_for('login'))
     else:
-        return redirect(url_for('my_clients'))
+        return redirect(url_for('login'))
 
 @app.route('/addtrain')
 def add_train():
