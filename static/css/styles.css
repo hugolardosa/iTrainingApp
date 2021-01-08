@@ -17,3 +17,36 @@
 .mylabel{
     font-size: 1.4em;
 }
+
+.myimg{
+    background-color: rgb(202, 251, 255);
+}
+
+.myform{
+    background-color: violet;
+}
+
+.myrow{
+    height: 100vh;
+}
+
+#principalimg{
+    width: 100%;
+    height: 100%;
+}
+
+#logo{
+    width: 300px;
+}
+
+.custom {
+    width: 90px !important;
+}
+
+.mywidth{
+    width: 70%;
+}
+
+
+
+

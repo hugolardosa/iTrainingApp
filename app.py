@@ -65,7 +65,7 @@ def signup_post():
     # print("estou aqui!")
     email = request.form.get('email')
     name = request.form.get('name')
-    password = request.form.get('password')
+    paseditProfsword = request.form.get('password')
     pt_code = request.form.get('pt_code')
     pt_code = 0 if pt_code == "" else pt_code
     # print(type(pt_code))
@@ -104,6 +104,10 @@ def logout():
 def profile():
     return render_template('profile.html')
 
+@app.route('/editProfile_Client')
+def editProfile_Client():
+    return render_template('editProfile_Client.html')
+
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
@@ -126,6 +130,11 @@ def mensalidade():
 @app.route('/local')
 def local():
     return render_template('local.html')
+
+@app.route('/addtrain')
+def add_train():
+    return render_template('addtrain.html')
+
 
 
         

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/three-column.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/details-tag.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="column_details" style="background-color:#86cfda;">
+            <h2>Exercícios protótipo</h2>
+            <p>Add ssss</p>
+        </div>
+
+
+        <div class="column" align="left">
+            <h2 align="center">Novo Treino para: PESSOA</h2>
+
+
+            <details>
+                <summary>Detalhes do Exercício</summary>
+                <form>
+                    <div class="block">
+                        <label>Nome do Exercício: </label>
+                        <input type="text" size=50% placeholder="Ex: Braços"/>
+                    </div>
+                    <div class="block">
+                        <label>Repetições: </label>
+                        <input type="text" size=50% placeholder="Ex: 9 repetições"/>
+                    </div>
+                    <div class="block">
+                        <label>Material: </label>
+                        <input type="text" size=50% placeholder="Ex: halteres"/>
+                    </div>
+                    <div class="block">
+                        <label>Tempo (em minutos): </label>
+                        <input type="text" size=20% placeholder="Ex: 1 minuto"/>
+                    </div>
+                    <br>
+                    <div class="block" align="left">
+                        <label>Instruções: </label>
+                        <textarea class="form-control" name="instructions" rows="3" placeholder="Como fazer..."></textarea>
+                    </div>
+
+                </form>
+            </details>
+            <div id="addMore"></div>
+            <input type="submit" onclick="addExercise()" value="Adicionar Exercício">
+            <input type="submit" onclick="removeExercise()" value="Remover Exercício">
+            <input type="submit" align="middle" value="Submeter Treino">
+        </div>
+
+
+
+
+        <div class="column_details" style="background-color:#00e4d0;">
+            <h2>Client Details</h2>
+            <p>Some text..</p>
+        </div>
+    </div>
+
+    <script>
+        const trains = document.getElementById("addMore");
+        function addExercise(){
+            trains.innerHTML += '<details id="plus"> <summary>Detalhes do Exercício</summary><form><div class="block"><label>Nome do Exercício: </label><input type="text" size=50% placeholder="Ex: Braços"/></div><div class="block"><label>Repetições: </label><input type="text" size=50% placeholder="Ex: 9 repetições"/></div><div class="block"><label>Material: </label> <input type="text" size=50% placeholder="Ex: halteres"/> </div><div class="block"><label>Tempo (em minutos): </label><input type="text" size=20% placeholder="Ex: 1 minuto"/></div><br> <div class="block"> <label>Instruções: </label><textarea class="form-control" name="instructions" rows="3" placeholder="Como fazer..."></textarea></div></form></details>';
+        }
+
+        function removeExercise(){
+           try{
+               trains.removeChild(trains.lastChild);
+           }catch (e){
+           }
+        }
+
+    </script>
+{% endblock %}

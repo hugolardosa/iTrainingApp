@@ -7,38 +7,36 @@
     </div>
     <div class="row center">
         <div class="col-md-6">
-            <input class="form-check-input" name="exampleRadios" type="radio" id="ginasios" value="option1">
+            <input class="form-check-input btn-check" onclick='onlyOne(this);' name="check" type="checkbox" id="ginasios" value="gym" autocomplete="off">
             <label class="form-check-label mylabel" for="ginasios">
                 Ginásios
             </label>
         </div>
         <div class="col-md-6">
-            <input class="form-check-input" name="exampleRadios" type="radio" id="casaArlivre" value="option2">
+            <input class="form-check-input btn-check" onclick='onlyOne(this);' name="check" type="checkbox" id="casaArlivre" value="car">
             <label class="form-check-label mylabel" for="casaArlivre">
                 Casa / Ar livre
             </label>
         </div>
     </div>
     <div class="row center mt-4">
-        <div class="col-md-6">
-            <div class="card">
+        <div id="fstcol" class="col-md-6">
+            <!-- <div class="card">
                 <div class="my-3">
-                    <div class="card-body">
-                        Em que zona vive?
-                    </div>
-                    <form class="form my-2 my-lg-0 d-flex justify-content-center">
-                        <input class="form-control" type="search" placeholder="Search" style="width: 15em;">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                      </form>
+                    <h5 class="card-title">Ginásios Parceiros</h5>
+                    <select class="custom-select custom-select-lg mywidth">
+                        <option selected>FitHub</option>
+                        <option value="2">GymForUs</option>
+                        <option value="3">GymAveiro</option>
+                        <option value="4">GymSantaJoana</option>
+                      </select>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="col-md-6">
-            <div class="card">
+        <div id="sndcol" class="col-md-6">
+            <!-- <div class="card">
                 <div class="my-3">
-                    <div class="card-body">
-                        Tem material de exercício em casa?
-                    </div>
+                    <h5 class="card-title">Tem material de exercício em casa?</h5>
                     <div class="d-flex justify-content-around">
                         <div class="">
                             <input class="form-check-input" name="sbtn" type="radio" id="sbtn1" value="option1">
@@ -50,9 +48,70 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div id="materialTa" class="d-flex flex-row justify-content-center">
+                    <div class="form-group mywidth">
+                        <label class="align-self-center"for="material">Descrição</label>
+                        <textarea class="form-control" id="material" placeholder="Descreva aqui..." rows="3"></textarea>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>
+
+<script>
+
+    const fstcoldiv = document.getElementById("fstcol");
+    const sndcoldiv = document.getElementById("sndcol");
+
+    const gymcheckbox = document.getElementById("ginasios");
+    const carcheckbox = document.getElementById("casaArlivre")
+
+    function onlyOne(checkbox){
+        var checkboxs = document.getElementsByName("check");
+        checkboxs.forEach((item) => {
+            if (item !== checkbox) {
+                item.checked = false;
+
+                if(item.value == "car"){
+                    sndcoldiv.innerHTML = "";
+                }else{ // checkbox.value == "gym"
+                fstcoldiv.innerHTML = "";
+                }
+            }else{
+                if(item.value == "car"){
+                    sndcoldiv.innerHTML = 
+                    `
+                    <div class="card">
+                        <div class="my-3">
+                            <h5 class="card-title">Tem material de exercício em casa?</h5>
+                            <div class="d-flex justify-content-around">
+                                <div class="">
+                                    <input class="form-check-input" name="sbtn" type="radio" id="sbtn1" value="option1">
+                                    <label class="form-check-label" for="sbtn1">Sim</label>
+                                </div>
+                                <div class="">
+                                    <input class="form-check-input" name="nbtn" type="radio" id="nbtn1" value="option2">
+                                    <label class="form-check-label" for="nbtn1">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="materialTa" class="d-flex flex-row justify-content-center">
+                            <div class="form-group mywidth">
+                                <label class="align-self-center"for="material">Descrição</label>
+                                <textarea class="form-control" id="material" placeholder="Descreva aqui..." rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                }else{ // checkbox.value == "gym"
+                    fstcoldiv.innerHTML = "<div class=\"card\"><div class=\"my-3\"><h5 class=\"card-title\">Ginásios Parceiros</h5><select class=\"custom-select custom-select-lg mywidth\"><option selected>FitHub</option><option value=\"2\">GymForUs</option><option value=\"3\">GymAveiro</option><option value=\"4\">GymSantaJoana</option></select></div></div>";
+                }
+
+            }
+
+        })
+    }
+</script>
 
 {% endblock %}
