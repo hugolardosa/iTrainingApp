@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row center d-flex align-items-center myheader">
+        <div class="col">
+            <h2>Escolha um PT</h2>
+        </div>
+    </div>
+        <div class="col-md-6">
+            {% for p in pt %}
+            <div class="row center">
+                <a class="btn btn-lg btn-info btn" href="setPt?code={{ p.pt_code }}">{{ p.name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

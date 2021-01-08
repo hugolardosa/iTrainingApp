@@ -50,5 +50,5 @@ class Exercice:
         self.needed_objects = []
 
 class Utils:
-    def getAlltype(lista, ty="Pt"):
+    def getAlltype(lista, ty=Pt):
         return [ x for x in lista if isinstance(x, ty) ]
