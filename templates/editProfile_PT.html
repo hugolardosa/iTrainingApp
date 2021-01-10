@@ -1,12 +1,14 @@
 {% extends "base.html" %} {% block content %}
-<div class="container" style="background-color: #CEECF5;">
+
+<div class="container" >
     <div class="row center d-flex align-items-center myheight myheader">
         <div class="col">
-            <h2>Editar Conta </h2>
+            <h2>Editar Conta PT</h2>
         </div>
     </div>
-    <form method="POST" action="/editProfile_Client">
-        <div class="row center" >
+    <!--NOME-->
+    <form method="POST" action="/editProfile_PT">
+        <div class="row center">
             <div class="col-md-12">
 
                 <div class="row my-3 mt-3">
@@ -30,6 +32,7 @@
                     </div>         
 
                 </div>
+                
 
                 <div class="row my-3 mt-3">
                     <div class="col-md-8 offset-md-2"> <!--<div class="col-md-4 offset-md-2">-->
@@ -37,18 +40,9 @@
                             <label for="address">Morada:</label>
                             <input class="form-control" type="text" name="address" placeholder={{current_user.address}}>
                         </div>
-                    </div>
-
-                    <!--   
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="Nporta">No.:</label>
-                            <input class="form-control" type="text" name="Nporta" placeholder="PREdefinido">
-                        </div>
-                    </div>
-                    -->
+                    </div>                    
                 </div>
-
+                
                 <div class="row my-3 mt-3">
                     <div class="col-md-6 offset-md-2">
                         <div class="form-group">
@@ -65,48 +59,8 @@
                     </div>
                 </div>
 
-                <div class="row my-3 mt-3">
-                    <div class="col-md-2 offset-md-2">
-                        <div class="form-group">
-                            <label for="weight">Peso:</label>
-                            <input type="text" class="form-control" name="weight" placeholder={{current_user.weight}}kg>
-                        </div>
-                        
-                    </div>
-
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="height">Altura:</label>
-                            <input type="text" class="form-control" name="height" placeholder={{current_user.height}}cm>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="bady">Data de Nascimento:</label>
-                            <input type="date" class="form-control" name="bday" placeholder="dd-mm-aaaa" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row my-3 mt-3">
-                    <div class="col-md-8 offset-md-2">
-                        <div class="form-group">
-                            <label for="obj">Objectivos:</label>
-                            <textarea class="form-control" name="obj" rows="3" placeholder={{current_user.obj}}></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row my-3 mt-3">
-                    <div class="col-md-8 offset-md-2">
-                        <div class="form-group">
-                            <label for="health_problems">Problemas de saúde/Limitações físicas:</label>
-                            <textarea class="form-control" name="health_problems" rows="5" placeholder={{current_user.health_problems}}></textarea>
-                        </div>
-                    </div>
-                </div>
-
+                
+            
                 <div class="row my-3 mt-3">
                     <div class="col-md-4 offset-md-2 d-flex align-items-center">
                         <div class="pl-4">
@@ -128,18 +82,19 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="MudarPass"></div>
-                
+                <div id="MudarPass">
+                </div>
             </div>
         </div>
         
         <div class="row center align-items-center">
             <div class="col">
+                <!--VER PAGINA DO PROFILE DO PT-->
                 <a href="{{ url_for('profile') }}" class="btn btn-primary ml-4 rounded-pill">Voltar</a>
                 <button type="submit" id="btn" class="btn btn-primary ml-4 rounded-pill">Guardar</button>
             </div>
-        </div>            
+        </div>
+        <!--<div class="row my-3 mt-3"></div>-->
     </form>
 </div>
 

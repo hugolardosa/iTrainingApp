@@ -129,14 +129,78 @@ def editProfile_Client():
 @app.route('/editProfile_Client', methods=['POST'])
 def editProfile_Client_post():
     ## A FAZER: Ir buscar todos os campos
+    email = request.form.get('email')
+    name = request.form.get('name')
+    password = request.form.get('password')
+    passwordRepet = request.form.get('password') # posso fazer assim?
+    # print(type(pt_code))
+    address = request.form.get('address') + " Nº " + request.form.get('Nporta')
+    city = request.form.get('city')
+    cell_phone = request.form.get('cell_phone')
+    postal_code = request.form.get('postal_code')
+    # 2a página
+    bday = request.form.get('bday')
+    weight = request.form.get('weight')
+    height = request.form.get('height')
+    obj = request.form.get('obj')
+    health_problems = request.form.get('health_problems')
+
+    if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
+        flash('Password não confirmada')
+        return redirect(url_for('editProfile_Client'))
 
     for i in range(0,len(users)):
         #ao encontrar o id
         if users[i].id == current_user.id:
-           #users[i].email = #var do email
-           # fazer para todos
+            users[i].email = email
+            users[i].name= name
+            users[i].password = password
+            users[i].address = address
+            users[i].city = city
+            users[i].cell_phone = cell_phone
+            users[i].postal_code = postal_code
+            users[i].bday = bday
+            users[i].weight = weight
+            users[i].height = height
+            users[i].obj = obj
+            users[i].health_problems = health_problems
             break
     return redirect(url_for('profile'))
+    
+@app.route('/editProfile_PT')
+def editProfile_PT():
+    return render_template('editProfile_PT.html')
+
+
+@app.route('/editProfile_PT', methods=['POST'])
+def editProfile_PT_post():
+    ## A FAZER: Ir buscar todos os campos
+    email = request.form.get('email')
+    name = request.form.get('name')
+    password = request.form.get('password')
+    passwordRepet = request.form.get('password') # posso fazer assim?
+    # print(type(pt_code))
+    address = request.form.get('address') + " Nº " + request.form.get('Nporta')
+    city = request.form.get('city')
+    cell_phone = request.form.get('cell_phone')
+    postal_code = request.form.get('postal_code')
+
+    if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
+        flash('Password não confirmada')
+        return redirect(url_for('editProfile_PT'))
+
+    for i in range(0,len(users)):
+        #ao encontrar o id
+        if users[i].pt_code == current_user.pt_code:
+            users[i].email = email
+            users[i].name= name
+            users[i].password = password
+            users[i].address = address
+            users[i].city = city
+            users[i].cell_phone = cell_phone
+            users[i].postal_code = postal_code
+            break
+    return redirect(url_for('profile')) #VER PAGINA DO PROFILE DO PT
 
 @app.route('/calendar')
 def calendar():
