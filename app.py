@@ -5,6 +5,8 @@ from DataTypes import *
 from databases import *
 
 ##### Clients and PT for demo ##############
+from databases.db import create_db, create_entry_db
+
 demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'),
                  address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555",
                  bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
@@ -40,6 +42,7 @@ def load_user(user_id):
 # Auth File
 @app.route('/')
 def login():
+    create_db()
     return render_template('login.html')
 
 
@@ -100,10 +103,12 @@ def signup_post():
     # if it's a client append to list
     # # else is a PT, append to user lists
     if pt_code == 0:
-        cl = Client(email=email, name=name, password=generate_password_hash(password, method='sha256'), address=address,
-                    city=city, cell_phone=cell_phone, postal_code=postal_code, bday=bday, weight=weight, height=height,
-                    obj=obj, health_problems=health_problems)
-        users.append(cl)
+
+        values = (email, name, generate_password_hash(password, method='sha256'), address,
+                  city, cell_phone, postal_code, bday, weight, height,
+                  obj, health_problems)
+        create_entry_db('CLIENT_DETAILS', values)
+
     else:
         pt = Pt(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code,
                 address=address, city=city, cell_phone=cell_phone, postal_code=postal_code)
@@ -125,6 +130,7 @@ def profile():
 @app.route('/editProfile_Client')
 def editProfile_Client():
     return render_template('editProfile_Client.html')
+
 
 @app.route('/editProfile_Client', methods=['POST'])
 def editProfile_Client_post():
@@ -149,8 +155,8 @@ def editProfile_Client_post():
         flash('Password não confirmada')
         return redirect(url_for('editProfile_Client'))
 
-    for i in range(0,len(users)):
-        #ao encontrar o id
+    for i in range(0, len(users)):
+        # ao encontrar o id
         if users[i].id == current_user.id:
             users[i].email = email
             users[i].name= name
@@ -202,6 +208,7 @@ def editProfile_PT_post():
             break
     return redirect(url_for('profile')) #VER PAGINA DO PROFILE DO PT
 
+
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
@@ -239,16 +246,18 @@ def get_pt():
 @app.route('/setPt')
 def set_pt():
     pt_code = request.args.get('code')
-    #get the last added client in users
+    # get the last added client in users
     if users[-1].pt_code == 0:
         users[-1].pt_id = pt_code
         return redirect(url_for('login'))
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/addtrain')
 def add_train():
     return render_template('addtrain.html')
+
 
 @app.route('/chat')
 def chat():
