@@ -2,9 +2,11 @@ from flask import Flask, Blueprint, render_template, redirect, url_for, request,
 from flask_login import LoginManager, UserMixin, login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
-from databases import *
+from databases.database import *
 
 ##### Clients and PT for demo ##############
+
+
 demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'),
                  address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555",
                  bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
@@ -40,6 +42,7 @@ def load_user(user_id):
 # Auth File
 @app.route('/')
 def login():
+    create_db()
     return render_template('login.html')
 
 
@@ -100,14 +103,17 @@ def signup_post():
     # if it's a client append to list
     # # else is a PT, append to user lists
     if pt_code == 0:
-        cl = Client(email=email, name=name, password=generate_password_hash(password, method='sha256'), address=address,
-                    city=city, cell_phone=cell_phone, postal_code=postal_code, bday=bday, weight=weight, height=height,
-                    obj=obj, health_problems=health_problems)
-        users.append(cl)
+
+        values = (email, name, generate_password_hash(password, method='sha256'), address,
+                  city, cell_phone, postal_code, bday, weight, height,
+                  obj, health_problems)
+        create_entry_db('CLIENT_DETAILS', values)
+
     else:
-        pt = Pt(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code,
-                address=address, city=city, cell_phone=cell_phone, postal_code=postal_code)
-        users.append(pt)
+        values = (email, name, generate_password_hash(password, method='sha256'), pt_code,
+                  address, city, cell_phone, postal_code)
+        create_entry_db('PT_DETAILS', values)
+
     return redirect(url_for('mensalidade'))
 
 
@@ -126,13 +132,14 @@ def profile():
 def editProfile_Client():
     return render_template('editProfile_Client.html')
 
+
 @app.route('/editProfile_Client', methods=['POST'])
 def editProfile_Client_post():
     ## A FAZER: Ir buscar todos os campos
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
-    passwordRepet = request.form.get('password') # posso fazer assim?
+    passwordRepet = request.form.get('password')  # posso fazer assim?
     # print(type(pt_code))
     address = request.form.get('address') + " Nº " + request.form.get('Nporta')
     city = request.form.get('city')
@@ -149,11 +156,11 @@ def editProfile_Client_post():
         flash('Password não confirmada')
         return redirect(url_for('editProfile_Client'))
 
-    for i in range(0,len(users)):
-        #ao encontrar o id
+    for i in range(0, len(users)):
+        # ao encontrar o id
         if users[i].id == current_user.id:
             users[i].email = email
-            users[i].name= name
+            users[i].name = name
             users[i].password = password
             users[i].address = address
             users[i].city = city
@@ -166,7 +173,8 @@ def editProfile_Client_post():
             users[i].health_problems = health_problems
             break
     return redirect(url_for('profile'))
-    
+
+
 @app.route('/editProfile_PT')
 def editProfile_PT():
     return render_template('editProfile_PT.html')
@@ -178,7 +186,7 @@ def editProfile_PT_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
-    passwordRepet = request.form.get('password') # posso fazer assim?
+    passwordRepet = request.form.get('password')  # posso fazer assim?
     # print(type(pt_code))
     address = request.form.get('address') + " Nº " + request.form.get('Nporta')
     city = request.form.get('city')
@@ -189,18 +197,19 @@ def editProfile_PT_post():
         flash('Password não confirmada')
         return redirect(url_for('editProfile_PT'))
 
-    for i in range(0,len(users)):
-        #ao encontrar o id
+    for i in range(0, len(users)):
+        # ao encontrar o id
         if users[i].pt_code == current_user.pt_code:
             users[i].email = email
-            users[i].name= name
+            users[i].name = name
             users[i].password = password
             users[i].address = address
             users[i].city = city
             users[i].cell_phone = cell_phone
             users[i].postal_code = postal_code
             break
-    return redirect(url_for('profile')) #VER PAGINA DO PROFILE DO PT
+    return redirect(url_for('profile'))  # VER PAGINA DO PROFILE DO PT
+
 
 @app.route('/calendar')
 def calendar():
@@ -239,16 +248,18 @@ def get_pt():
 @app.route('/setPt')
 def set_pt():
     pt_code = request.args.get('code')
-    #get the last added client in users
+    # get the last added client in users
     if users[-1].pt_code == 0:
         users[-1].pt_id = pt_code
         return redirect(url_for('login'))
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/addtrain')
 def add_train():
     return render_template('addtrain.html')
+
 
 @app.route('/chat')
 def chat():
