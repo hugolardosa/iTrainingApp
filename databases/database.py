@@ -71,11 +71,9 @@ table_prototipe = {
     'ADD_TRAIN': '''INSERT INTO TRAIN(Client, Exercise, Reps, Material, Extime, Inst)
                 VALUES (?,?,?,?,?,?)''',
 
-    'CHECK_PASSWORD': '''SELECT Password FROM CLIENT_DETAILS WHERE email == ?
-                VALUES (?)''',
+    'CHECK_PASSWORD': '''SELECT Password FROM CLIENT_DETAILS WHERE email == ? ''',
 
-    'GET_PT': '''SELECT ? from PERSONAL_TRAINER WHERE email == ?
-            VALUES (?,?)'''
+    'GET_PT': '''SELECT ? from PERSONAL_TRAINERS WHERE email == ?'''
 }
 
 
@@ -94,11 +92,13 @@ def get_element(sql_table, selection, element):
     c = conn.cursor()
     sql = table_prototipe.get(sql_table)
     if selection is None:
-        c.execute(sql, element)
+        c.execute(sql, (element, ))
     else:
         c.execute(sql, (selection,element))
-    if c is None and sql_table is 'CHECK_PASSWORD':
-        c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINER WHERE email == ? VALUES (?)''', element)
-        return c
-    return c
+
+    if c.fetchone() is None and sql_table is 'CHECK_PASSWORD':
+        c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINERS WHERE email == ?''', (element, ))
+        return c.fetchone()
+    return c.fetchone()
+
 #TODO

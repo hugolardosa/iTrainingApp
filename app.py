@@ -54,17 +54,18 @@ def login_post():
 
     #user = next((x for x in users if x.email == email), None)
     sha = get_element('CHECK_PASSWORD', None, email)
-
-
+    print(sha[0])
+    print('----------')
+    print(password)
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
-    if not check_password_hash(sha, password):
+    if not sha[0] == password:
         flash('O e-mail ou a password está errada. Tente novamente.')
         return redirect(url_for('login'))  # if the user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
-    login_user(email, remember=remember)
-
+    #login_user(email, remember=remember)
+    #TODO check the line above
     # if it's a client then go to the calendar page
 
     if get_element('GET_PT','Code',email):
@@ -108,13 +109,13 @@ def signup_post():
     # # else is a PT, append to user lists
     if pt_code == 0:
 
-        values = (email, name, generate_password_hash(password, method='sha256'), address,
+        values = (email, name, password, address,
                   city, cell_phone, postal_code, bday, weight, height,
                   obj, health_problems)
         create_entry_db('CLIENT_DETAILS', values)
 
     else:
-        values = (email, name, generate_password_hash(password, method='sha256'), pt_code,
+        values = (email, name, password, pt_code,
                   address, city, cell_phone, postal_code)
         create_entry_db('PT_DETAILS', values)
 
