@@ -25,6 +25,15 @@ sql_PT_table = """ CREATE TABLE IF NOT EXISTS PERSONAL_TRAINERS(
                             [Phone_Number] INTEGER,
                             [Postal_Code] INTEGER);"""
 
+sql_train_table = """ CREATE TABLE IF NOT EXISTS TRAIN(
+                            [Client] text,
+                            [Exercise] text,
+                            [Reps] INTEGER,
+                            [Material] text,
+                            [ExTime] INTEGER,
+                            [Inst] text);"""
+
+
 def create_db():
     conn = sqlite3.connect('databases/' + db)
     c = conn.cursor()
@@ -57,8 +66,16 @@ table_prototipe = {
               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)''',
 
     'PT_DETAILS': '''INSERT INTO PERSONAL_TRAINERS(email, PT_Name, Password, Code, Address, City, Phone_Number, Postal_Code)
-                VALUES (?,?,?,?,?,?,?,?)'''
+                VALUES (?,?,?,?,?,?,?,?)''',
 
+    'ADD_TRAIN': '''INSERT INTO TRAIN(Client, Exercise, Reps, Material, Extime, Inst)
+                VALUES (?,?,?,?,?,?)''',
+
+    'CHECK_PASSWORD': '''SELECT Password FROM CLIENT_DETAILS WHERE email == ?
+                VALUES (?)''',
+
+    'GET_PT': '''SELECT ? from PERSONAL_TRAINER WHERE email == ?
+            VALUES (?,?)'''
 }
 
 
@@ -70,3 +87,18 @@ def create_entry_db(sql_table, values):
     c.execute(sql, task)
     conn.commit()
     conn.close()
+
+
+def get_element(sql_table, selection, element):
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    sql = table_prototipe.get(sql_table)
+    if selection is None:
+        c.execute(sql, element)
+    else:
+        c.execute(sql, (selection,element))
+    if c is None and sql_table is 'CHECK_PASSWORD':
+        c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINER WHERE email == ? VALUES (?)''', element)
+        return c
+    return c
+#TODO

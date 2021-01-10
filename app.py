@@ -52,21 +52,25 @@ def login_post():
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
-    user = next((x for x in users if x.email == email), None)
+    #user = next((x for x in users if x.email == email), None)
+    sha = get_element('CHECK_PASSWORD', None, email)
+
+
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
-    if not user or not check_password_hash(user.password, password):
+    if not check_password_hash(sha, password):
         flash('O e-mail ou a password está errada. Tente novamente.')
         return redirect(url_for('login'))  # if the user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
-    login_user(user, remember=remember)
+    login_user(email, remember=remember)
 
     # if it's a client then go to the calendar page
-    if user.pt_code == 0:
-        return redirect(url_for('calendar'))
-    else:
+
+    if get_element('GET_PT','Code',email):
         return redirect(url_for('my_clients'))
+    else:
+        return redirect(url_for('calendar'))
 
 
 @app.route('/signup')
