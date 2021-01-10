@@ -2,10 +2,10 @@ from flask import Flask, Blueprint, render_template, redirect, url_for, request,
 from flask_login import LoginManager, UserMixin, login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
-from databases import *
+from databases.database import *
 
 ##### Clients and PT for demo ##############
-from databases.db import create_db, create_entry_db
+
 
 demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'),
                  address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555",

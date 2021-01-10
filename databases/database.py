@@ -53,8 +53,8 @@ def edit_db(sql_table, values, client):
 
 table_prototipe = {
     'CLIENT_DETAILS': ''' INSERT INTO CLIENT_DETAILS(email, Client_Name, Password, Address, City, Phone_Number, Postal_Code,Birthday,Weight,Height,Obj,Problems) 
-              VALUES (?,?,?,?,?,?,?,?,?,?,?,?)'''
-    
+              VALUES (?,?,?,?,?,?,?,?,?,?,?,?)''',
+
     'PT_DETAILS': '''INSERT INTO PERSONAL_TRAINERS(email, PT_Name, Password, Address, City, Phone_Number, Postal_Code)
                 VALUES (?,?,?,?,?,?,?)'''
 
