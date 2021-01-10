@@ -19,6 +19,7 @@ sql_PT_table = """ CREATE TABLE IF NOT EXISTS PERSONAL_TRAINERS(
                             [email] text,
                             [PT_Name] text,
                             [Password] text,
+                            [Code] text,
                             [Address] text,
                             [City] text,
                             [Phone_Number] INTEGER,
@@ -55,8 +56,8 @@ table_prototipe = {
     'CLIENT_DETAILS': ''' INSERT INTO CLIENT_DETAILS(email, Client_Name, Password, Address, City, Phone_Number, Postal_Code,Birthday,Weight,Height,Obj,Problems) 
               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)''',
 
-    'PT_DETAILS': '''INSERT INTO PERSONAL_TRAINERS(email, PT_Name, Password, Address, City, Phone_Number, Postal_Code)
-                VALUES (?,?,?,?,?,?,?)'''
+    'PT_DETAILS': '''INSERT INTO PERSONAL_TRAINERS(email, PT_Name, Password, Code, Address, City, Phone_Number, Postal_Code)
+                VALUES (?,?,?,?,?,?,?,?)'''
 
 }
 

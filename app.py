@@ -110,9 +110,10 @@ def signup_post():
         create_entry_db('CLIENT_DETAILS', values)
 
     else:
-        pt = Pt(email=email, name=name, password=generate_password_hash(password, method='sha256'), pt_code=pt_code,
-                address=address, city=city, cell_phone=cell_phone, postal_code=postal_code)
-        users.append(pt)
+        values = (email, name, generate_password_hash(password, method='sha256'), pt_code,
+                  address, city, cell_phone, postal_code)
+        create_entry_db('PT_DETAILS', values)
+
     return redirect(url_for('mensalidade'))
 
 
@@ -138,7 +139,7 @@ def editProfile_Client_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
-    passwordRepet = request.form.get('password') # posso fazer assim?
+    passwordRepet = request.form.get('password')  # posso fazer assim?
     # print(type(pt_code))
     address = request.form.get('address') + " Nº " + request.form.get('Nporta')
     city = request.form.get('city')
@@ -159,7 +160,7 @@ def editProfile_Client_post():
         # ao encontrar o id
         if users[i].id == current_user.id:
             users[i].email = email
-            users[i].name= name
+            users[i].name = name
             users[i].password = password
             users[i].address = address
             users[i].city = city
@@ -172,7 +173,8 @@ def editProfile_Client_post():
             users[i].health_problems = health_problems
             break
     return redirect(url_for('profile'))
-    
+
+
 @app.route('/editProfile_PT')
 def editProfile_PT():
     return render_template('editProfile_PT.html')
@@ -184,7 +186,7 @@ def editProfile_PT_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
-    passwordRepet = request.form.get('password') # posso fazer assim?
+    passwordRepet = request.form.get('password')  # posso fazer assim?
     # print(type(pt_code))
     address = request.form.get('address') + " Nº " + request.form.get('Nporta')
     city = request.form.get('city')
@@ -195,18 +197,18 @@ def editProfile_PT_post():
         flash('Password não confirmada')
         return redirect(url_for('editProfile_PT'))
 
-    for i in range(0,len(users)):
-        #ao encontrar o id
+    for i in range(0, len(users)):
+        # ao encontrar o id
         if users[i].pt_code == current_user.pt_code:
             users[i].email = email
-            users[i].name= name
+            users[i].name = name
             users[i].password = password
             users[i].address = address
             users[i].city = city
             users[i].cell_phone = cell_phone
             users[i].postal_code = postal_code
             break
-    return redirect(url_for('profile')) #VER PAGINA DO PROFILE DO PT
+    return redirect(url_for('profile'))  # VER PAGINA DO PROFILE DO PT
 
 
 @app.route('/calendar')
