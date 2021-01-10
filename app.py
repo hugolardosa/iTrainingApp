@@ -202,7 +202,6 @@ def editProfile_PT_post():
             break
     return redirect(url_for('profile')) #VER PAGINA DO PROFILE DO PT
 
-
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
