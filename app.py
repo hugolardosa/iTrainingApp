@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, redirect, url_for, request,
 from flask_login import LoginManager, UserMixin, login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
+from databases import *
 
 ##### Clients and PT for demo ##############
 demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'),
