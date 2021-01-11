@@ -27,9 +27,14 @@
             <p>Problemas de Saúde: <mark>{{current_user.health_problems}}</mark></p>
             {% endif %} 
         </div>
-        <!--Butao para editar o cliente-->
+        <!--Butao para editar o cliente ou o pt-->
         <div class="col">
+            {% if current_user.pt_code != 0 %} <!--pt-->
+            <a href="{{ url_for('editProfile_PT') }}" class="btn btn-primary ml-4 rounded-pill">Editar</a>
+            {% endif %} 
+            {% if current_user.pt_code == 0 %} <!--Cliente-->
             <a href="{{ url_for('editProfile_Client') }}" class="btn btn-primary ml-4 rounded-pill">Editar</a>
+            {% endif %} 
         </div>
     </div>
 </div>
