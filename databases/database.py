@@ -93,6 +93,7 @@ def get_element(sql_table, selection, element):
     sql = table_prototipe.get(sql_table)
     if selection is None:
         c.execute(sql, (element, ))
+        return c.fetchone()
     else:
         c.execute(sql, (selection,element))
 
@@ -100,5 +101,3 @@ def get_element(sql_table, selection, element):
         c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINERS WHERE email == ?''', (element, ))
         return c.fetchone()
     return c.fetchone()
-
-#TODO

@@ -48,11 +48,8 @@ def login_post():
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
-    #user = next((x for x in users if x.email == email), None)
     sha = get_element('CHECK_PASSWORD', None, email)
-    print(sha[0])
-    print('----------')
-    print(password)
+
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
     if not sha[0] == password:
@@ -90,7 +87,7 @@ def signup_post():
     postal_code = request.form.get('postal_code')
     # 2a página
     bday = request.form.get('bday')
-    starting_weight = request.form.get('weight')
+    weight = request.form.get('weight')
     height = request.form.get('height')
     obj = request.form.get('obj')
     health_problems = request.form.get('health_problems')
@@ -225,10 +222,13 @@ def train():
                            time=current_user.train_list[train_id].duration)
 
 
-@app.route('/myclients')
+'''@app.route('/myclients')
 def my_clients():
-    return "My clients page, coming soon"
+    return "My clients page, coming soon"'''
 
+@app.route('/addtrain')
+def my_clients():
+    return render_template('addtrain.html')
 
 @app.route('/mensalidade')
 def mensalidade():
