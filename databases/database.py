@@ -71,9 +71,13 @@ table_prototipe = {
     'ADD_TRAIN': '''INSERT INTO TRAIN(Client, Exercise, Reps, Material, Extime, Inst)
                 VALUES (?,?,?,?,?,?)''',
 
-    'CHECK_PASSWORD': '''SELECT Password FROM CLIENT_DETAILS WHERE email == ? ''',
+    'CHECK_PASSWORD': '''SELECT PASSWORD FROM CLIENT_DETAILS WHERE email == ? ''',
 
-    'GET_PT': '''SELECT ? from PERSONAL_TRAINERS WHERE email == ?'''
+    'CHECK_EMAIL': '''SELECT EMAIL FROM CLIENT_DETAILS WHERE email == ? ''',
+
+    'GET_PT': '''SELECT ? from PERSONAL_TRAINERS WHERE email == ?''',
+
+    'GET': '''SELECT ? FROM ? WHERE ? == ?'''
 }
 
 
@@ -92,12 +96,26 @@ def get_element(sql_table, selection, element):
     c = conn.cursor()
     sql = table_prototipe.get(sql_table)
     if selection is None:
-        c.execute(sql, (element, ))
-        return c.fetchone()
+        c.execute(sql, (element,))
+        tmp = c.fetchone()
     else:
-        c.execute(sql, (selection,element))
+        c.execute(sql, (selection, element))
+    if tmp is not None:
+        return tmp
 
-    if c.fetchone() is None and sql_table is 'CHECK_PASSWORD':
-        c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINERS WHERE email == ?''', (element, ))
+    if tmp is None:
+        if sql_table is 'CHECK_PASSWORD':
+            c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINERS WHERE email == ?''', (element,))
+        elif sql_table is 'CHECK_EMAIL':
+            c.execute('''SELECT EMAIL FROM PERSONAL_TRAINERS WHERE email == ?''', (element,))
         return c.fetchone()
     return c.fetchone()
+
+
+def get(sql_table, selection, e1, element):
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    sql = table_prototipe.get(sql_table)
+    c.execute(sql, (selection, e1, element,))
+    return c.fetchone()
+

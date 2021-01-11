@@ -7,16 +7,10 @@ from databases.database import *
 ##### Clients and PT for demo ##############
 
 ## 
-demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'), address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555", bday="12-12-1995", starting_weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
-demo_pt = Pt(email="cc@gmail.com", name="Calisto Comum", password=generate_password_hash("123", method='sha256'), pt_code="!THE_PT_CODE_123!", address="Rua dos ovos moles", city="Aveiro", cell_phone="919191911", postal_code="2330-555")
-demo_cl2 = Client(email="roberto@gmail.com", name="Roberto", password=generate_password_hash("123", method='sha256'), address="Bairro do liceu", city="Aveiro", cell_phone="911222333", postal_code="2330-555", bday="12-12-1995", starting_weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
-demo_cl2.train_list = [Trains("Braços", "1-12-2020", "5", [Exercice("Elevações na cadeira", "10")])]
+train_list = [Trains("Braços", "1-12-2020", "5", [Exercice("Elevações na cadeira", "10")])]
 
 
 #############
-
-# list with users from app
-users = [demo_cl, demo_pt, demo_cl2]
 
 app = Flask(__name__,
             static_folder='static',
@@ -28,11 +22,11 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
-
+#TODO
 @login_manager.user_loader
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
-    return next((x for x in users if x.id == int(user_id)), None)
+    return None
 
 
 # Auth File
@@ -91,12 +85,13 @@ def signup_post():
     height = request.form.get('height')
     obj = request.form.get('obj')
     health_problems = request.form.get('health_problems')
-    user = next((x for x in users if x.email == email),
-                None)  # if this returns a user, then the email already exists in database
 
-    if user != None:  # if a user is found, we want to redirect back to signup page so user can try again
+    checkmail=get_element('CHECK_EMAIL',None, email)
+
+    if checkmail is not None:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Email address already exists')
-        return redirect(url_for('login'))
+        return render_template('New_SignUp.html')
+
 
     # if it's a client append to list
     # # else is a PT, append to user lists
