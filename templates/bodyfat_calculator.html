@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="omni-calculator" data-calculator="health/navy-body-fat" data-width="300" data-config='{"Age":{"label":"Idade","suffix":"anos"},"sex":{"label":"Sexo"},"Height":{"label":"Altura"},"Neck":{"label":"Circunferência do pescoço","help":"Medir um pouco por cima da laringe"},"Waist":{"label":"Circunferência da cintura","help":"Medir um pouco por cima do umbigo"},"Hip":{"label":"Circunferência do quadril","help":"Medir um pouco por cima da coxa"},"BF_female":{"label":"Percentagem de massa gorda"},"BF_male":{"label":"Percentagem de massa gorda"},"valueSelects":{"264":{"male":{}}}}' data-currency="EUR" data-show-row-controls="false" data-version="3" data-t="1610066155005">
+    <div class="omni-calculator-header">Calculadora de Massa Gorda</div>
+    <div class="omni-calculator-footer">
+      <a href="https://www.omnicalculator.com/health/navy-body-fat" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+    </div>
+  </div>
+  <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
+
+{% endblock %}

@@ -4,9 +4,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
 
 ## 
-demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'), address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555", bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
+demo_cl = Client(email="clarice@gmail.com", name="Clarice", password=generate_password_hash("123", method='sha256'), address="Rua dos ovos moles", city="Aveiro", cell_phone="999999999", postal_code="2330-555", bday="12-12-1995", starting_weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
 demo_pt = Pt(email="cc@gmail.com", name="Calisto Comum", password=generate_password_hash("123", method='sha256'), pt_code="!THE_PT_CODE_123!", address="Rua dos ovos moles", city="Aveiro", cell_phone="919191911", postal_code="2330-555")
-demo_cl2 = Client(email="roberto@gmail.com", name="Roberto", password=generate_password_hash("123", method='sha256'), address="Bairro do liceu", city="Aveiro", cell_phone="911222333", postal_code="2330-555", bday="12-12-1995", weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
+demo_cl2 = Client(email="roberto@gmail.com", name="Roberto", password=generate_password_hash("123", method='sha256'), address="Bairro do liceu", city="Aveiro", cell_phone="911222333", postal_code="2330-555", bday="12-12-1995", starting_weight="120", height="123", obj="Perder peso", health_problems="Nenhum")
 demo_cl2.train_list = [Trains("Braços", "1-12-2020", "5", [Exercice("Elevações na cadeira", "10")])]
 
 
@@ -74,7 +74,7 @@ def signup_post():
     postal_code = request.form.get('postal_code')
     #2a página
     bday = request.form.get('bday')
-    weight = request.form.get('weight')
+    starting_weight = request.form.get('weight')
     height = request.form.get('height')
     obj = request.form.get('obj')
     health_problems = request.form.get('health_problems')
@@ -126,9 +126,15 @@ def my_clients():
 def mensalidade():
     return render_template('mensalidade.html')
 
+@app.route('/progress')
+def progress():
+    return render_template('progress.html')
+
 @app.route('/local')
 def local():
     return render_template('local.html')
 
-
+@app.route('/bodyfatCalculator')
+def bodyfatCalculator():
+    return render_template('bodyfat_calculator.html')
         
