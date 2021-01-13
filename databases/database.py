@@ -95,11 +95,13 @@ def get_element(sql_table, selection, element):
     conn = sqlite3.connect('databases/' + db)
     c = conn.cursor()
     sql = table_prototipe.get(sql_table)
+    tmp = None
     if selection is None:
         c.execute(sql, (element,))
         tmp = c.fetchone()
     else:
         c.execute(sql, (selection, element))
+
     if tmp is not None:
         return tmp
 
@@ -118,4 +120,28 @@ def get(sql_table, selection, e1, element):
     sql = table_prototipe.get(sql_table)
     c.execute(sql, (selection, e1, element,))
     return c.fetchone()
+
+
+def setondb(personid, values):
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    table=''
+    tmp = ['EMAIL','CLIENT_NAME','PASSWORD','ADDRESS','CITY','PHONE_NUMBER','POSTAL_CODE','BIRTHDAY','WEIGHT','HEIGHT','OBJ','PROBLEMS']
+    c.execute('''SELECT EMAIL FROM CLIENT_DETAILS WHERE EMAIL==?''',(personid,))
+    t=c.fetchone()
+    if  t is None:
+        for val in values:
+            x=tmp.pop(0)
+            if val is not None:
+                c.execute('''UPDATE PERSONAL_TRAINERS SET ? \
+                        = ? WHERE email== ?''',( x, val, personid))
+    else:
+        for val in values:
+            x=tmp.pop(0)
+            if val is not None:
+                c.execute('''UPDATE CLIENT_DETAILS SET ? \
+                
+                = ? WHERE email== ?''',( x, val, personid))
+
+
 

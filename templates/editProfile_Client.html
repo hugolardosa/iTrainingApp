@@ -1,5 +1,35 @@
-{% extends "base.html" %} {% block content %}
-<div class="container" style="background-color: #CEECF5;">
+{% extends "base.html" %}
+{% block css %}
+<style>
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Atenção!</strong> Se não pretende alterar alguma informação em específico, por favor, deixe em branco. Obrigado!
+    </div>
+    <div class="container" style="background-color: #CEECF5;">
     <div class="row center d-flex align-items-center myheight myheader">
         <div class="col">
             <h2>Editar Conta </h2>
@@ -13,7 +43,7 @@
                     <div class="col-md-8 offset-md-2"> <!--<div class="col-md-4 offset-md-2">-->
                         <div class="form-group">
                             <label for="name">Nome:</label>
-                            <input class="form-control" type="text" name="name" placeholder={{current_user.name}}>
+                            <input class="form-control" type="text" name="name" >
                         </div>
                     </div>                    
                 </div>
@@ -21,12 +51,12 @@
                 <div class="row my-3 mt-3">
                     <div class="col-md-6 offset-md-2">
                         <label for="cell_phone">Email:</label>
-                        <input class="form-control" type="email" name="email" placeholder= {{current_user.email}}>
+                        <input class="form-control" type="email" name="email" >
                     </div> 
 
                     <div class="col-md-2">
                         <label for="cell_phone">Numero de Telefone:</label>
-                        <input class="form-control" type="tel" name="cell_phone" placeholder={{current_user.cell_phone}}>
+                        <input class="form-control" type="tel" name="cell_phone" >
                     </div>         
 
                 </div>
@@ -35,7 +65,7 @@
                     <div class="col-md-8 offset-md-2"> <!--<div class="col-md-4 offset-md-2">-->
                         <div class="form-group">
                             <label for="address">Morada:</label>
-                            <input class="form-control" type="text" name="address" placeholder={{current_user.address}}>
+                            <input class="form-control" type="text" name="address">
                         </div>
                     </div>
 
@@ -53,14 +83,14 @@
                     <div class="col-md-6 offset-md-2">
                         <div class="form-group">
                             <label for="city">Cidade:</label>
-                            <input class="form-control" type="text" name="city" placeholder={{current_user.city}}>
+                            <input class="form-control" type="text" name="city">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="postal_code">Codigo de postal:</label>
-                            <input class="form-control" type="text" name="postal_code" placeholder={{current_user.postal_code}} >
+                            <input class="form-control" type="text" name="postal_code">
                         </div>
                     </div>
                 </div>
@@ -69,7 +99,7 @@
                     <div class="col-md-2 offset-md-2">
                         <div class="form-group">
                             <label for="weight">Peso:</label>
-                            <input type="text" class="form-control" name="weight" placeholder={{current_user.weight}}kg>
+                            <input type="text" class="form-control" name="weight" placeholder=kg>
                         </div>
                         
                     </div>
@@ -77,7 +107,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="height">Altura:</label>
-                            <input type="text" class="form-control" name="height" placeholder={{current_user.height}}cm>
+                            <input type="text" class="form-control" name="height" placeholder=cm>
                         </div>
                     </div>
 
@@ -93,7 +123,7 @@
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
                             <label for="obj">Objectivos:</label>
-                            <textarea class="form-control" name="obj" rows="3" placeholder={{current_user.obj}}></textarea>
+                            <textarea class="form-control" name="obj" rows="3" placeholder=></textarea>
                         </div>
                     </div>
                 </div>
@@ -102,7 +132,7 @@
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
                             <label for="health_problems">Problemas de saúde/Limitações físicas:</label>
-                            <textarea class="form-control" name="health_problems" rows="5" placeholder={{current_user.health_problems}}></textarea>
+                            <textarea class="form-control" name="health_problems" rows="5" placeholder=></textarea>
                         </div>
                     </div>
                 </div>

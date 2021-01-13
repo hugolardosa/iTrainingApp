@@ -22,7 +22,8 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
-#TODO
+ID_Person = None
+
 @login_manager.user_loader
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
@@ -54,6 +55,8 @@ def login_post():
     #login_user(email, remember=remember)
     #TODO check the line above
     # if it's a client then go to the calendar page
+
+    ID_Person = email
 
     if get_element('GET_PT','Code',email):
         return redirect(url_for('my_clients'))
@@ -131,10 +134,15 @@ def editProfile_Client_post():
     ## A FAZER: Ir buscar todos os campos
     email = request.form.get('email')
     name = request.form.get('name')
+
+    #TODO
     password = request.form.get('password')
     passwordRepet = request.form.get('password')  # posso fazer assim?
     # print(type(pt_code))
-    address = request.form.get('address') + " Nº " + request.form.get('Nporta')
+    if(request.form.get('address')  is None or request.form.get('Nporta') is None):
+        address = None
+    else:
+        address = request.form.get('address') + " Nº " + request.form.get('Nporta')
     city = request.form.get('city')
     cell_phone = request.form.get('cell_phone')
     postal_code = request.form.get('postal_code')
@@ -148,23 +156,11 @@ def editProfile_Client_post():
     if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Password não confirmada')
         return redirect(url_for('editProfile_Client'))
+    values=(email, name, password, address,city, cell_phone, postal_code, bday, weight, height, obj, health_problems)
+    setondb(ID_Person,values)
 
-    for i in range(0, len(users)):
-        # ao encontrar o id
-        if users[i].id == current_user.id:
-            users[i].email = email
-            users[i].name = name
-            users[i].password = password
-            users[i].address = address
-            users[i].city = city
-            users[i].cell_phone = cell_phone
-            users[i].postal_code = postal_code
-            users[i].bday = bday
-            users[i].weight = weight
-            users[i].height = height
-            users[i].obj = obj
-            users[i].health_problems = health_problems
-            break
+
+
     return redirect(url_for('profile'))
 
 
@@ -190,17 +186,8 @@ def editProfile_PT_post():
         flash('Password não confirmada')
         return redirect(url_for('editProfile_PT'))
 
-    for i in range(0, len(users)):
-        # ao encontrar o id
-        if users[i].pt_code == current_user.pt_code:
-            users[i].email = email
-            users[i].name = name
-            users[i].password = password
-            users[i].address = address
-            users[i].city = city
-            users[i].cell_phone = cell_phone
-            users[i].postal_code = postal_code
-            break
+
+
     return redirect(url_for('profile'))  # VER PAGINA DO PROFILE DO PT
 
 
