@@ -1,18 +1,18 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="container" >
+<div class="container"> <!--style="background-color: #CEECF5;"-->
     <div class="row center d-flex align-items-center myheight myheader">
         <div class="col">
-            <h2>Editar Conta PT</h2>
+            <h2>Editar Conta</h2>
         </div>
     </div>
-    <!--NOME-->
+
     <form method="POST" action="/editProfile_PT">
         <div class="row center">
             <div class="col-md-12">
 
                 <div class="row my-3 mt-3">
-                    <div class="col-md-8 offset-md-2"> <!--<div class="col-md-4 offset-md-2">-->
+                    <div class="col-md-8 offset-md-2">
                         <div class="form-group">
                             <label for="name">Nome:</label>
                             <input class="form-control" type="text" name="name" placeholder={{current_user.name}}>
@@ -59,8 +59,6 @@
                     </div>
                 </div>
 
-                
-            
                 <div class="row my-3 mt-3">
                     <div class="col-md-4 offset-md-2 d-flex align-items-center">
                         <div class="pl-4">

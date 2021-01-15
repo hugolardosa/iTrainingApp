@@ -47,6 +47,8 @@ def login_post():
 
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
+    if sha is None:
+        return redirect(url_for('login'))
     if not sha[0] == password:
         flash('O e-mail ou a password está errada. Tente novamente.')
         return redirect(url_for('login'))  # if the user doesn't exist or password is wrong, reload the page

@@ -8,8 +8,8 @@
     width: 25%;
     padding-top: 1%;
     padding-left: 5%;
-    background: linear-gradient(120deg, whitesmoke, ghostwhite);
-    border: 2px solid antiquewhite;
+    background: linear-gradient(120deg, LightSkyBlue, LightSkyBlue);
+    border: 2px solid LightSkyBlue;
     border-radius: 5px;
 }
 .column {
@@ -17,7 +17,7 @@
     padding-top: 1%;
     padding-left: 5%;
     width: 50%;
-    background: linear-gradient(120deg, aquamarine, whitesmoke);
+    background: linear-gradient(120deg, LightSkyBlue, LightSkyBlue);
 }
 
 /* Clear floats after the columns */

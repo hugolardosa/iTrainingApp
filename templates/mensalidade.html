@@ -1,89 +1,138 @@
 {% extends "base.html" %} {% block content %}
-<div class="container">
-    <div class="row center d-flex align-items-center myheader">
-        <div class="col">
-            <h2>Mensalidade</h2>
-        </div>
-    </div>
-    <div class="row center" style="height: 40vh;">
-        <div class="col-md-6 d-flex flex-column justify-content-around">
-            <div class="card">
-                <div class="d-flex justify-content-around card-body mycard" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
-                    <h5 class="card-title">1 mês</h5>
-                    <p class="card-text">9,99 euros</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="d-flex justify-content-around card-body mycard" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
-                    <h5 class="card-title">3 meses</h5>
-                    <p class="card-text">19,99 euros</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="d-flex justify-content-around card-body mycard" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
-                    <h5 class="card-title">1 ano</h5>
-                    <p class="card-text">49,99 euros</p>
-                </div>
-            </div>          
-        </div>
-        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
-            <img src="{{ url_for('static', filename='img/bag-147782.svg') }}" alt="money bag" style="height: 200px; width: 200px;">
-        </div>
-    </div>
-    <div class="row center align-items-center" style="height: 20vh;">
-        <div class="col">
-            <a href="{{ url_for('login') }}" class="btn btn-primary ml-4 rounded-pill">Retroceder</a>
-            <a href="{{ url_for('local') }}"class="btn btn-primary ml-4 rounded-pill">Seguinte</a>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-target=".bd-example-modal-lg">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Selecione método de pagamento</h5>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="main-layout">
+    <div class="wrapper">
+        <div id="about" class="about">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                        <div class="about_img">
+                            <figure><img src="{{ url_for('static', filename='img/about-img.jpg') }}"></figure>
+                            
+                            <!---<figure><img src="images/about-img.jpg" alt="#" /></figure>-->
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 pa-ing">
+                        <div class="about_text">
+                            <figure><img src="{{ url_for('static', filename='img/img.png') }}"></figure>
+                            
+                            <!--<div class="about_text_box">
+                                <h2>About<strong class="black_white"> d sports</strong></h2>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and w</p>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="col-md-5">
-                            <div class="d-flex flex-row align align-items-center justify-content-between mycardstyle" type="button">
-                                <p>MB WAY</p>
-                                <div class="mydiv">
-                                    <img id="principalimg" src="https://img5.apk.tools/img/nDKhDELMEjag8qJ9aKAjfTSzWZKVg3tY2OZ-eo8Jp8hxYDgifCFQoNOqxDwTaAW-O8o=s300" alt="mbway">
+        </div>
+        
+        <div id="training" class="training">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title">
+                            <h2>Exclusive<strong class="black"> training packages</strong></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="training_packages_bg">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="training_packages_box">
+                                <h3>1 MÊS </h3>
+                                <span><strong class="white_bold">9,99 euros</strong></span>
+                                <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Comprar Agora</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="training_packages_box">
+                                <h3>3 MESES</h3>
+                                <span><strong class="white_bold">19,99 euros</strong></span>
+                                <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Comprar Agora</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="training_packages_box">
+                                <h3>1 ANO </h3>
+                                <span><strong class="white_bold">49,99 euros</strong></span>
+                                <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Comprar Agora</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <!--<div class="row center align-items-center" style="height: 20vh;">
+                <div class="col">
+                    <a href="{{ url_for('login') }}" class="btn btn-primary ml-4 rounded-pill">Retroceder</a>
+                    <a href="{{ url_for('local') }}"class="btn btn-primary ml-4 rounded-pill">Seguinte</a>
+                </div>
+            </div>-->
+        </div>
+        <!-- end training -->
+
+           
+    </div>
+    <div class="overlay"></div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-target=".bd-example-modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Selecione método de pagamento</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="d-flex flex-row align align-items-center justify-content-between mycardstyle" type="button">
+                                    <p>MB WAY</p>
+                                    <div class="mydiv">
+                                        <img id="principalimg" src="https://img5.apk.tools/img/nDKhDELMEjag8qJ9aKAjfTSzWZKVg3tY2OZ-eo8Jp8hxYDgifCFQoNOqxDwTaAW-O8o=s300" alt="mbway">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center my-2">
-                        <div class="col-md-5">
-                            <div class="d-flex flex-row align align-items-center justify-content-between mycardstyle" type="button">
-                                <p>PAYPAL</p>
-                                <div class="mydivpp">
-                                    <img id="principalimg" src="data:image/png;base64,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" alt="mbway">
+                        <div class="row justify-content-center my-2">
+                            <div class="col-md-5">
+                                <div class="d-flex flex-row align align-items-center justify-content-between mycardstyle" type="button">
+                                    <p>PAYPAL</p>
+                                    <div class="mydivpp">
+                                        <img id="principalimg" src="data:image/png;base64,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" alt="mbway">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-5">
-                            <div class="d-flex flex-row align align-items-center  justify-content-between mycardstyle" type="button">
-                                <p>MULTIBANCO</p>
-                                <div class="mydiv">
-                                    <img id="principalimg" src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0020/5557/brand.gif?itok=jSgIgPza" alt="mbway">
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="d-flex flex-row align align-items-center  justify-content-between mycardstyle" type="button">
+                                    <p>MULTIBANCO</p>
+                                    <div class="mydiv">
+                                        <img id="principalimg" src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0020/5557/brand.gif?itok=jSgIgPza" alt="mbway">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Efetuar Pagamento</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                <div class="modal-footer">
+                    <a href="{{ url_for('local') }}"class="btn btn-primary" >Efetuar Pagamento</a>
+                    <a href="{{ url_for('login') }}"class="btn btn-secondary" data-dismiss="modal">Sair</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
 
 {% endblock %}
