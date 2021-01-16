@@ -197,6 +197,13 @@ def editProfile_PT_post():
 def calendar():
     return render_template('calendar.html')
 
+@app.route('/chat')
+def chat():
+    return render_template('chat.html')
+
+@app.route('/getPt')
+def getPt():
+    return render_template('getPt.html')
 
 @app.route('/train')  # /train?id=
 def train():

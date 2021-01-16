@@ -1,41 +1,100 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="container">
-    <div class="row center d-flex align-items-center myheight myheader">
-        <div class="col">
-            <h3>Bem-vindo {{current_user.name}}!</h1>
-        
-        </div>
-    </div>
-    <div class="row center mymaincontent">
-        <div class="col-md-12">
+{% extends "base.html" %} {% block content %}
 
-            <p>Nome: <mark>{{current_user.name}}</mark></p>
-            <p>E-Mail: <mark>{{current_user.email}}</mark></p>
-            {% if current_user.pt_code != 0 %}
-            <p>Código de PT: <mark>{{current_user.pt_code}}</mark></p>
-            {% endif %}
-            <p>Morada: <mark>{{current_user.address}}</mark></p>
-            <p>Cidade: <mark>{{current_user.city}}</mark></p>
-            <p>Telefone: <mark>{{current_user.cell_phone}}</mark></p>
-            <p>Codigo Postal: <mark>{{current_user.postal_code}}</mark></p>
-            {% if current_user.pt_code == 0 %}
-            <p>Aniversário: <mark>{{current_user.bday}}</mark></p>
-            <p>Peso: <mark>{{current_user.weight}}</mark> kg</p>
-            <p>Altura: <mark>{{current_user.height}}</mark> cm</p>
-            <p>Objetivos: <mark>{{current_user.obj}}</mark></p>
-            <p>Problemas de Saúde: <mark>{{current_user.health_problems}}</mark></p>
-            {% endif %} 
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <link href="{{ url_for('static', filename='css/treino.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}"> 
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+            <div class="container"></div>
+    
+            <div class="row center d-flex align-items-center myheight myheader">
+                <div class="col">
+                    <h3>Bem-vindo {{current_user.name}}!</h1>
+                
+                </div>
+            </div>
+            <div class="row center mymaincontent">
+                <div class="col-md-12">
+        
+                    <p>Nome: <mark>{{current_user.name}}</mark></p>
+                    <p>E-Mail: <mark>{{current_user.email}}</mark></p>
+                    {% if current_user.pt_code != 0 %}
+                    <p>Código de PT: <mark>{{current_user.pt_code}}</mark></p>
+                    {% endif %}
+                    <p>Morada: <mark>{{current_user.address}}</mark></p>
+                    <p>Cidade: <mark>{{current_user.city}}</mark></p>
+                    <p>Telefone: <mark>{{current_user.cell_phone}}</mark></p>
+                    <p>Codigo Postal: <mark>{{current_user.postal_code}}</mark></p>
+                    {% if current_user.pt_code == 0 %}
+                    <p>Aniversário: <mark>{{current_user.bday}}</mark></p>
+                    <p>Peso: <mark>{{current_user.weight}}</mark> kg</p>
+                    <p>Altura: <mark>{{current_user.height}}</mark> cm</p>
+                    <p>Objetivos: <mark>{{current_user.obj}}</mark></p>
+                    <p>Problemas de Saúde: <mark>{{current_user.health_problems}}</mark></p>
+                    {% endif %} 
+                </div>
+                <!--Butao para editar o cliente ou o pt-->
+                <!--<div class="col">
+                    {% if current_user.pt_code == 0 %} 
+                    <a href="{{ url_for('editProfile_Client') }}" class="btn btn-primary ml-4 rounded-pill">Editar</a>
+                    {% endif %} 
+                    {% if current_user.pt_code != 0 %} 
+                    <a href="{{ url_for('editProfile_PT') }}" class="btn btn-primary ml-4 rounded-pill">Editar</a>
+                    {% endif %} 
+                </div>
+            -->
+                
+            
+            </div>
+            
+          </div>
         </div>
-        <!--Butao para editar o cliente ou o pt-->
-        <div class="col">
-            {% if current_user.pt_code != 0 %} <!--pt-->
-            <a href="{{ url_for('editProfile_PT') }}" class="btn btn-primary ml-4 rounded-pill">Editar</a>
-            {% endif %} 
-            {% if current_user.pt_code == 0 %} <!--Cliente-->
-            <a href="{{ url_for('editProfile_Client') }}" class="btn btn-primary ml-4 rounded-pill">Editar</a>
-            {% endif %} 
+
+      <!-- Sidebar -->
+        <div id="sidebar" style="background-color:   #01A9DB ; "> <!--#A4A4A4   #045FB4   #08088A;-->
+
+          <div class="inner">
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="{{ url_for('calendar') }}">Ver treinos</a></li>
+                <li><a href="{{ url_for('chat') }}">Falar com o seu PT</a></li>
+                <li><a href="{{ url_for('progress') }}">Ver sua evolução</a></li>
+                <li><a href="{{ url_for('profile')}}">Ver Perfil</a></li>
+               
+                <!--escolher onde editar-->
+                {% if current_user.pt_code == 0 %} <!--CLiente-->
+                <li><a href="{{ url_for('editProfile_Client') }}" >Editar Perfil</a></li>
+                {% endif %} 
+                {% if current_user.pt_code != 0 %} <!--PT-->
+                <li><a href="{{ url_for('editProfile_PT') }}">Editar Perfil</a></li>
+                {% endif %} 
+                <li><a href="{{ url_for('logout')}}">Sair</a></li>  
+                
+               </ul>
+            </nav>          
+          </div>
         </div>
     </div>
-</div>
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>   
+    <script src="js/custom.js"></script>
+</body>
+ 
+</html>
 {% endblock %}

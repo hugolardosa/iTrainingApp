@@ -1,40 +1,104 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="container">
-    <div class="row center d-flex align-items-center myheight myheader">
-        <div class="col">
-            <h3>Os seu treinos agendados:</h3>
-        </div>
-    </div>
-    <div class="row center mymaincontent">
-        <div class="col-md-12">
-            <div id="mainExercice">
-            {% if current_user.train_list == [] %}
-                <h5><b> O seu PT ainda não lhe criou um plano de treinos</b></h5>
-            {% else %}
-                {% for x in current_user.train_list %}
-                
-                <hr>    
-                <p>Data -> {{ x.date }}</p>
-                    <p><b>{{ x.name }}</b></p>
-                    <p>  Duração: {{ x.duration }} minutos </p>
-                    {% if not x.done %}
-                        <a class="btn btn-primary bt-sm ml-1 rounded-pill" href="train?id={{ loop.index - 1 }}">Realizar</a>
-                    {% else %}
-                        <a class="btn btn-secondary bt-sm ml-1 rounded-pill">Realizar</a>
-                    {% endif %}          
-                {% endfor %}
-            {% endif %}
-        </div>
-    </div>
-    </div>
-    <!-- <script>
-        function doExercice(exerc_list){
-            var mainExercice = document.getElementById("mainExercice");
-            mainExercice.style.display = "none";
+{% extends "base.html" %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <link href="{{ url_for('static', filename='css/treino.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}"> 
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Banner -->
+            <section class="main-banner">
+                             
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="banner-content">
+                                <div class="row">
+                                    <figure><img src="{{ url_for('static', filename='img/treino.jpg') }}"></figure>
+                                    <div class="banner-caption">
+                                        <h4>Seus treinos</h4>
+                                        <span><p> Realise estes treinos para conseguir os seus objetivos.</p></span>
+                                        
+                                        <!--<div class="primary-button">
+                                        <a href="#">Read More</a>
+                                        </div>-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+            <div class="container"></div>
+                <div class="row center d-flex align-items-center myheight myheader">
+                    <div class="col">
+                        <h3>Os seus treinos agendados:</h3>
+                    </div>
+                </div>
+                <div class="row center mymaincontent">
+                    <div class="col-md-12">
+                        <div id="mainExercice">
+                        {% if current_user.train_list == [] %}
+                            <h5><b> O seu PT ainda não lhe criou um plano de treinos</b></h5>
+                        {% else %}
+                            {% for x in current_user.train_list %}
+                            
+                            <hr>    
+                            <p>Data -> {{ x.date }}</p>
+                                <p><b>{{ x.name }}</b></p>
+                                <p>  Duração: {{ x.duration }} minutos </p>
+                                {% if not x.done %}
+                                    <a class="btn btn-primary bt-sm ml-1 rounded-pill" href="train?id={{ loop.index - 1 }}">Realizar</a>
+                                {% else %}
+                                    <a class="btn btn-secondary bt-sm ml-1 rounded-pill">Realizar</a>
+                                {% endif %}          
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
             
-            var exPg = document.getElementById("exPg");
-            exPg.style.display = "block";
-        }
-    </script> -->
+          </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar" style="background-color:   #01A9DB ; "> <!--#A4A4A4   #045FB4   #08088A;-->
+
+          <div class="inner">
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="{{ url_for('calendar') }}">Ver treinos</a></li>
+                <li><a href="{{ url_for('chat') }}">Falar com o seu PT</a></li>
+                <li><a href="{{ url_for('progress') }}">Ver sua evolução</a></li>
+                <li><a href="{{ url_for('profile')}}">Ver Perfil</a></li>     
+                <li><a href="{{ url_for('logout')}}">Sair</a></li>             
+              </ul>
+            </nav>          
+          </div>
+        </div>
+    </div>
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>   
+    <script src="js/custom.js"></script>
+</body>
+ 
+</html>
 {% endblock %}
