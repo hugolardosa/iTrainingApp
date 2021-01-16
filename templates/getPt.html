@@ -1,19 +1,69 @@
 {% extends "base.html" %} {% block content %}
-<div class="container">
-    <div class="row center d-flex align-items-center myheader">
-        <div class="col">
-            <h2>Escolha um PT</h2>
-        </div>
-    </div>
-        <div class="col-md-6">
-            {% for p in pt %}
-            <div class="row center">
-                <a class="btn btn-lg btn-info btn" href="setPt?code={{ p.pt_code }}">{{ p.name }}</a>
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+    
+  </head>
+
+  
+
+  
+    <div id="main">
+        <div class="container">
+            <div class="row center d-flex align-items-center myheader">
+                <div class="col">
+                    <h2>Escolha um PT</h2>
+                </div>
             </div>
-            {% endfor %}
         </div>
+        <!-- Services -->
+        <section class="services">
+            <div class="container">
+                
+            <div class="row center">
+                <div class="col-md-4">
+                   
+                    <div class="service-item second-item">
+                        <a href="{{ url_for('calendar') }}"><h4>Calisto Comum</h4></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item second-item">
+                        <a href="{{ url_for('calendar') }}"><h4>João Gomes</h4></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item third-item">
+                        <a href="{{ url_for('calendar') }}"><h4>Filipe Pinto</h4></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item fourth-item">
+                        <a href="{{ url_for('calendar') }}"><h4>Fernando Oliveira</h4></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item fivth-item">
+                        <a href="{{ url_for('calendar') }}"> <h4>Alberto Ferreira</h4></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item sixth-item">
+                        <a href="{{ url_for('calendar') }}"><h4>Tânia Costa</h4></a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</div>
-
-
+</html>
 {% endblock %}

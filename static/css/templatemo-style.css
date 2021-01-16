@@ -174,57 +174,7 @@ section {
 	transition: all 0.5s;
 }
 
-.services .service-item .icon {
-	width: 50px;
-	height: 50px;
-	display: inline-block;
-	margin-bottom: 30px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	transition: all 0.5s;
-}
 
-.services .first-item .icon {
-	background-image: url(../images/icon_01.png);
-}
-.services .first-item:hover .icon {
-	background-image: url(../images/icon_hover_01.png);
-}
-
-.services .second-item .icon {
-	background-image: url(../images/icon_02.png);
-}
-.services .second-item:hover .icon {
-	background-image: url(../images/icon_hover_02.png);
-}
-
-.services .third-item .icon {
-	background-image: url(../images/icon_03.png);
-}
-.services .third-item:hover .icon {
-	background-image: url(../images/icon_hover_03.png);
-}
-
-.services .fourth-item .icon {
-	background-image: url(../images/icon_04.png);
-}
-.services .fourth-item:hover .icon {
-	background-image: url(../images/icon_hover_04.png);
-}
-
-.services .fivth-item .icon {
-	background-image: url(../images/icon_05.png);
-}
-.services .fivth-item:hover .icon {
-	background-image: url(../images/icon_hover_05.png);
-}
-
-.services .sixth-item .icon {
-	background-image: url(../images/icon_06.png);
-}
-.services .sixth-item:hover .icon {
-	background-image: url(../images/icon_hover_06.png);
-}
 
 .services .service-item:hover {
 	background-color: #535ba0;
