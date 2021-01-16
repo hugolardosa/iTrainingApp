@@ -1,6 +1,5 @@
 from flask import Flask, Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, UserMixin, login_required, current_user, login_user, logout_user
-from werkzeug.security import generate_password_hash, check_password_hash
 from DataTypes import *
 from databases.database import *
 
@@ -68,10 +67,6 @@ def login_post():
         user = Pt(email=e, name=name, password= passw, pt_code = code, address=addr,\
                  city= city,cell_phone= phone, postal_code=pcode )
 
-    print('ID do user logado: ')
-    print(user.id)
-    print(user)
-
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
@@ -113,7 +108,6 @@ def signup_post():
 
 
     if checkmail[0] is not None:  # if a user is found, we want to redirect back to signup page so user can try again
-        print("existe")
         flash('Email address already exists')
         return render_template('New_SignUp.html')
 
@@ -153,33 +147,38 @@ def editProfile_Client():
 
 @app.route('/editProfile_Client', methods=['POST'])
 def editProfile_Client_post():
-    ## A FAZER: Ir buscar todos os campos
-    email = request.form.get('email')
-    name = request.form.get('name')
+    global user
+    if request.form.get('email') != '':
+        user.email = request.form.get('email')
+    if request.form.get('name') != '':
+        user.name = request.form.get('name')
+    if request.form.get('password') != '':
+        user.password = request.form.get('password')
+    if (request.form.get('address') or request.form.get('Nporta')) == '':
+        user.address = request.form.get('address') + " Nº " + request.form.get('Nporta')
+    if request.form.get('city') != '':
+        user.city = request.form.get('city')
+    if request.form.get('cell_phone') != '':
+        user.cell_phone = request.form.get('cell_phone')
+    if request.form.get('postal_code') != '':
+        user.postal_code = request.form.get('postal_code')
+    if request.form.get('bday') != '':
+        user.bday = request.form.get('bday')
+    if request.form.get('weight') != '':
+        user.actual_weight = request.form.get('weight')
+    if request.form.get('height') != '':
+        user.height = request.form.get('height')
+    if request.form.get('obj') != '':
+        user.obj = request.form.get('obj')
+    if request.form.get('health_problems') != '':
+        user.health_problems = request.form.get('health_problems')
 
-    #TODO
+    '''#TODO
     password = request.form.get('password')
     passwordRepet = request.form.get('password')  # posso fazer assim?
-    # print(type(pt_code))
-    if(request.form.get('address')  is None or request.form.get('Nporta') is None):
-        address = None
-    else:
-        address = request.form.get('address') + " Nº " + request.form.get('Nporta')
-    city = request.form.get('city')
-    cell_phone = request.form.get('cell_phone')
-    postal_code = request.form.get('postal_code')
-    # 2a página
-    bday = request.form.get('bday')
-    weight = request.form.get('weight')
-    height = request.form.get('height')
-    obj = request.form.get('obj')
-    health_problems = request.form.get('health_problems')
-
     if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Password não confirmada')
-        return redirect(url_for('editProfile_Client'))
-
-
+        return redirect(url_for('editProfile_Client'))'''
 
     return redirect(url_for('profile'))
 
@@ -191,22 +190,25 @@ def editProfile_PT():
 
 @app.route('/editProfile_PT', methods=['POST'])
 def editProfile_PT_post():
-    ## A FAZER: Ir buscar todos os campos
-    email = request.form.get('email')
-    name = request.form.get('name')
-    password = request.form.get('password')
-    passwordRepet = request.form.get('password')  # posso fazer assim?
-    # print(type(pt_code))
-    address = request.form.get('address') + " Nº " + request.form.get('Nporta')
-    city = request.form.get('city')
-    cell_phone = request.form.get('cell_phone')
-    postal_code = request.form.get('postal_code')
+    global user
+    if request.form.get('email') != '':
+        user.email = request.form.get('email')
+    if request.form.get('name') != '':
+        user.name = request.form.get('name')
+    if request.form.get('password') != '':
+        user.password = request.form.get('password')
+    if (request.form.get('address') or request.form.get('Nporta')) == '':
+        user.address = request.form.get('address') + " Nº " + request.form.get('Nporta')
+    if request.form.get('city') != '':
+        user.city = request.form.get('city')
+    if request.form.get('cell_phone') != '':
+        user.cell_phone = request.form.get('cell_phone')
+    if request.form.get('postal_code') != '':
+        user.postal_code = request.form.get('postal_code')
 
-    if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
+    '''if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Password não confirmada')
-        return redirect(url_for('editProfile_PT'))
-
-
+        return redirect(url_for('editProfile_PT'))'''
 
     return redirect(url_for('profile'))  # VER PAGINA DO PROFILE DO PT
 
