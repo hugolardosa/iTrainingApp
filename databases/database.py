@@ -103,14 +103,14 @@ def get_element(sql_table, selection, element):
         c.execute(sql, (selection, element))
 
     if tmp is not None:
-        return tmp
+        return tmp,'client'
 
     if tmp is None:
         if sql_table is 'CHECK_PASSWORD':
             c.execute('''SELECT PASSWORD FROM PERSONAL_TRAINERS WHERE email == ?''', (element,))
         elif sql_table is 'CHECK_EMAIL':
             c.execute('''SELECT EMAIL FROM PERSONAL_TRAINERS WHERE email == ?''', (element,))
-        return c.fetchone()
+        return c.fetchone(),'pt'
     return c.fetchone()
 
 
@@ -120,6 +120,17 @@ def get(sql_table, selection, e1, element):
     sql = table_prototipe.get(sql_table)
     c.execute(sql, (selection, e1, element,))
     return c.fetchone()
+
+
+def get_row(tbl, email):
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    if tbl == 'pt':
+        c.execute('''SELECT * FROM PERSONAL_TRAINERS WHERE email == ? ''',(email, ))
+    elif tbl == 'client':
+        c.execute('''SELECT * FROM CLIENT_DETAILS WHERE email == ? ''',(email, ))
+    return c.fetchall()
+
 
 
 def setondb(personid, values):

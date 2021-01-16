@@ -22,12 +22,12 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
-ID_Person = None
+user = None
 
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
-    return None
+    return user
 
 
 # Auth File
@@ -39,11 +39,12 @@ def login():
 
 @app.route('/', methods=['POST'])
 def login_post():
+    global user
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
-    sha = get_element('CHECK_PASSWORD', None, email)
+    sha, tbl = get_element('CHECK_PASSWORD', None, email)
 
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
@@ -53,14 +54,31 @@ def login_post():
         flash('O e-mail ou a password está errada. Tente novamente.')
         return redirect(url_for('login'))  # if the user doesn't exist or password is wrong, reload the page
 
+    if tbl == 'client':
+        test = get_row(tbl, email)
+        e, name, passw, addr, city, phone, pcode, b, w , h, obj, prob= test[0]
+
+        user = Client(email = e, name = name, password = passw, address= addr, city = city, cell_phone= phone, \
+                      postal_code=pcode, bday=b,starting_weight=w, height=h, obj = obj, health_problems=prob)
+
+    elif tbl == 'pt':
+        test = get_row(tbl,email)
+        e, name, passw, code, addr, city, phone, pcode = test[0]
+
+        user = Pt(email=e, name=name, password= passw, pt_code = code, address=addr,\
+                 city= city,cell_phone= phone, postal_code=pcode )
+
+    print('ID do user logado: ')
+    print(user.id)
+    print(user)
+
+
     # if the above check passes, then we know the user has the right credentials
-    #login_user(email, remember=remember)
+    login_user(user, remember=remember)
     #TODO check the line above
     # if it's a client then go to the calendar page
 
-    ID_Person = email
-
-    if get_element('GET_PT','Code',email):
+    if user.pt_code != 0:
         return redirect(url_for('my_clients'))
     else:
         return redirect(url_for('calendar'))
@@ -91,9 +109,11 @@ def signup_post():
     obj = request.form.get('obj')
     health_problems = request.form.get('health_problems')
 
-    checkmail=get_element('CHECK_EMAIL',None, email)
+    checkmail = get_element('CHECK_EMAIL',None, email)
 
-    if checkmail is not None:  # if a user is found, we want to redirect back to signup page so user can try again
+
+    if checkmail[0] is not None:  # if a user is found, we want to redirect back to signup page so user can try again
+        print("existe")
         flash('Email address already exists')
         return render_template('New_SignUp.html')
 
@@ -158,8 +178,6 @@ def editProfile_Client_post():
     if passwordRepet != password:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Password não confirmada')
         return redirect(url_for('editProfile_Client'))
-    values=(email, name, password, address,city, cell_phone, postal_code, bday, weight, height, obj, health_problems)
-    setondb(ID_Person,values)
 
 
 
@@ -218,7 +236,7 @@ def my_clients():
     return "My clients page, coming soon"'''
 
 @app.route('/addtrain')
-def my_clients():
+def addtrain():
     return render_template('addtrain.html')
 
 @app.route('/mensalidade')
