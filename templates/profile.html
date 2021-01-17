@@ -44,7 +44,7 @@
                     {% if current_user.actual_weight != None %}
                     <p>Peso: <mark>{{current_user.actual_weight}}</mark> kg</p>
                     {% else %}
-                    <p>Peso: <mark>{{current_user.weight}}</mark> kg</p>
+                    <p>Peso: <mark>{{current_user.starting_weight}}</mark> kg</p>
                     {%endif%}
                     {% if current_user.actual_height != None %}
                     <p>Altura: <mark>{{current_user.actual_height}}</mark> cm</p>
