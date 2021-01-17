@@ -167,7 +167,7 @@ def editProfile_Client_post():
     if request.form.get('weight') != '':
         user.actual_weight = request.form.get('weight')
     if request.form.get('height') != '':
-        user.height = request.form.get('height')
+        user.actual_height = request.form.get('height')
     if request.form.get('obj') != '':
         user.obj = request.form.get('obj')
     if request.form.get('health_problems') != '':
@@ -247,6 +247,7 @@ def mensalidade():
 
 @app.route('/progress')
 def progress():
+    
     return render_template('progress.html')
 
 @app.route('/local')
