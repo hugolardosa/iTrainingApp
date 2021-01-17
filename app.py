@@ -221,6 +221,11 @@ def calendar():
 def chat():
     return render_template('chat.html')
 
+
+@app.route('/myclients')
+def my_clients():
+    return render_template('myclients.html')
+
 @app.route('/getPt')
 def getPt():
     return render_template('getPt.html')
