@@ -34,36 +34,66 @@
                 <div class="col-md-4">
                    
                     <div class="service-item second-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Calisto Comum</h4></a>
+                        <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><h4>Calisto Comun</h4></a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-item second-item">
-                        <a href="{{ url_for('calendar') }}"><h4>João Gomes</h4></a>
+                        <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><h4>João Gomes</h4></a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-item third-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Filipe Pinto</h4></a>
+                        <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><h4>Filipe Pinto</h4></a>
+                    
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-item fourth-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Fernando Oliveira</h4></a>
+                        <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><h4>Fernando Oliveira</h4></a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-item fivth-item">
-                        <a href="{{ url_for('calendar') }}"> <h4>Alberto Ferreira</h4></a>
+                        <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><h4>Alberto Ferreira</h4></a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-item sixth-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Tânia Costa</h4></a>
+                        <a class="BookNow" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><h4>Tânia Costa</h4></a>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-target=".bd-example-modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">A sua conta foi criada com sucesso</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row center align-items-center">
+                            <div class="col-md-4">
+                                <a href="{{ url_for('login') }}" class="btn btn-primary ml-4">ok</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
     </div>
 </html>
 {% endblock %}
