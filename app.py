@@ -223,7 +223,8 @@ def chat():
 
 @app.route('/getPt')
 def getPt():
-    return render_template('getPt.html')
+    lista_pts = get_all_pts()
+    return render_template('getPt.html', ll=lista_pts)
 
 @app.route('/train')  # /train?id=
 def train():

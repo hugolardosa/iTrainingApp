@@ -31,37 +31,14 @@
             <div class="container">
                 
             <div class="row center">
+                {% for x in ll %}
                 <div class="col-md-4">
                    
                     <div class="service-item second-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Calisto Comum</h4></a>
+                        <a href="{{ url_for('calendar') }}"><h4>{{x[1]}}</h4></a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="service-item second-item">
-                        <a href="{{ url_for('calendar') }}"><h4>João Gomes</h4></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item third-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Filipe Pinto</h4></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item fourth-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Fernando Oliveira</h4></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item fivth-item">
-                        <a href="{{ url_for('calendar') }}"> <h4>Alberto Ferreira</h4></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item sixth-item">
-                        <a href="{{ url_for('calendar') }}"><h4>Tânia Costa</h4></a>
-                    </div>
-                </div>
+               {% endfor %}
             </div>
         </section>
     </div>

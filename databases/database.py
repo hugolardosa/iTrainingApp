@@ -131,7 +131,11 @@ def get_row(tbl, email):
         c.execute('''SELECT * FROM CLIENT_DETAILS WHERE email == ? ''',(email, ))
     return c.fetchall()
 
-
+def get_all_pts():
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    c.execute('''SELECT * FROM PERSONAL_TRAINERS''')
+    return c.fetchall()
 
 def setondb(personid, values):
     conn = sqlite3.connect('databases/' + db)
