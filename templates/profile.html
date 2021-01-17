@@ -23,13 +23,13 @@
     
             <div class="row center d-flex align-items-center myheight myheader">
                 <div class="col">
-                    <h3>Bem-vindo {{current_user.name}}!</h1>
+                    <h1>Bem-vindo {{current_user.name}}!</h1>
                 
                 </div>
             </div>
             <div class="row center mymaincontent">
                 <div class="col-md-12">
-        
+                    
                     <p>Nome: <mark>{{current_user.name}}</mark></p>
                     <p>E-Mail: <mark>{{current_user.email}}</mark></p>
                     {% if current_user.pt_code != 0 %}
@@ -73,6 +73,7 @@
         </div>
 
       <!-- Sidebar -->
+        {% if current_user.pt_code == 0 %}
         <div id="sidebar" style="background-color:   #01A9DB ; "> <!--#A4A4A4   #045FB4   #08088A;-->
 
           <div class="inner">
@@ -97,6 +98,31 @@
             </nav>          
           </div>
         </div>
+        {% else %}
+        <div id="sidebar" style="background-color:   #01A9DB ; "> <!--#A4A4A4   #045FB4   #08088A;-->
+
+          <div class="inner">
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="{{ url_for('calendar') }}">Ver clientes</a></li>
+                
+                <li><a href="{{ url_for('profile')}}">Ver Perfil</a></li>
+               
+                <!--escolher onde editar-->
+                {% if current_user.pt_code == 0 %} <!--CLiente-->
+                <li><a href="{{ url_for('editProfile_Client') }}" >Editar Perfil</a></li>
+                {% endif %} 
+                {% if current_user.pt_code != 0 %} <!--PT-->
+                <li><a href="{{ url_for('editProfile_PT') }}">Editar Perfil</a></li>
+                {% endif %} 
+                <li><a href="{{ url_for('logout')}}">Sair</a></li>  
+                
+               </ul>
+            </nav>          
+          </div>
+        </div>
+        {% endif %}
     </div>
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
