@@ -54,3 +54,7 @@ class Exercice:
 class Utils:
     def getAlltype(lista, ty=Pt):
         return [ x for x in lista if isinstance(x, ty) ]
+
+class Chat:
+    def __init__(self):
+        self.chat = []

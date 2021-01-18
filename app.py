@@ -219,6 +219,7 @@ def calendar():
 
 @app.route('/chat')
 def chat():
+    
     return render_template('chat.html')
 
 
