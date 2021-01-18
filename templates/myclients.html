@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3"><img src="{{ url_for('static', filename='/img/avatar.jpg') }}" style="height: 200px;width: 200px;margin-top: 83px;"><input class="form-control-plaintext bg-white border-white shadow-none" type="text" value="Personal Trainer" readonly="" style="margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 40px;padding: 7px;"></div>
+                    <div class="col-md-3"><img src="{{ url_for('static', filename='/img/avatar.jpg') }}" style="height: 200px;width: 200px;margin-top: 83px;"><input class="form-control-plaintext bg-white border-white shadow-none" type="text" value={{current_user.name}} readonly="" style="margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 40px;padding: 7px;"></div>
                     <div class="col-md-9">
                         <div class="row">
                             <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"></a><img class="rounded-circle img-fluid image scale-on-hover" src="{{ url_for('static', filename='img/avatar.jpg') }}" style="width: 100px;height: 100 px;margin: 0px;margin-top: 8px;margin-right: 0px;margin-left: 53px;"></div>
