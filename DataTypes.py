@@ -13,12 +13,14 @@ class User(UserMixin):
         self.postal_code = postal_code
       
 class Client(User):
-    def __init__(self, email, name, password, address, city, cell_phone, postal_code, bday, starting_weight, height, obj, health_problems,actual_weight=None,actual_height=None):
+    def __init__(self, email, name, password, address, city, cell_phone, postal_code, bday, starting_weight, height, obj, health_problems,imc= None,actual_weight=None,actual_height=None,actual_imc=None):
         super().__init__(email, name, password, address, city, cell_phone, postal_code)
         self.bday = bday
         self.starting_weight = starting_weight
         self.actual_weight = actual_weight
         self.height = height
+        self.imc = starting_weight / (height*height)
+        self.actual_imc = actual_imc
         self.actual_height = actual_height
         self.obj = obj    
         self.health_problems = health_problems
