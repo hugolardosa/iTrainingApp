@@ -225,7 +225,8 @@ def chat():
 
 @app.route('/myclients')
 def my_clients():
-    return render_template('myclients.html')
+    lista_clients = get_all_clients()
+    return render_template('myclients.html',lc = lista_clients)
 
 @app.route('/getPt')
 def getPt():
