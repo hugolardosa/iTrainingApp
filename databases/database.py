@@ -137,6 +137,12 @@ def get_all_pts():
     c.execute('''SELECT * FROM PERSONAL_TRAINERS''')
     return c.fetchall()
 
+def get_all_clients():
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    c.execute('''SELECT * FROM CLIENT_DETAILS''')
+    return c.fetchall()
+
 def setondb(personid, values):
     conn = sqlite3.connect('databases/' + db)
     c = conn.cursor()
