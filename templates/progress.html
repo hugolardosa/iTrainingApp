@@ -156,24 +156,24 @@
                                       <div class="col-md-6">
                                         <h3 class="progress-title">Indice de Massa Corporal</h3>
                                         <div class="progress" style="margin-top: 10px;">
-                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.imc}};">{{current_user.imc}}%</div>
+                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.imc}};"><font face="Georgia" size= "1">{{current_user.imc}}%</font></div>
                                         </div>
                                         <div class="progress" style="margin-top: 0px;">
-                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.imc}};">{{current_user.imc}}%</div>
+                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.imc}};" > <font face="Georgia" size= "1">{{current_user.imc}}%</font></div>
                                         </div>
                                   
                                   
                                         <h3 class="progress-title">Peso</h3>
                                         <div class="progress" style="margin-top: 10px;">
-                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.starting_weight}}%;">{{current_user.starting_weight}}</div>
+                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.starting_weight}}%;"> <font face="Georgia" size= "1"></font>{{current_user.starting_weight}} </font></div>
                                         </div>
                                         {% if current_user.actual_weight == None %}
                                         <div class="progress" style="margin-top: 0px;">
-                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.starting_weight}}%;">{{current_user.starting_weight}}</div>
+                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{current_user.starting_weight}}%;"><font face="Georgia" size= "1"></font>{{current_user.starting_weight}} </font></div>
                                         </div>
                                         {% else%}
                                         <div class="progress" style="margin-top: 0px;">
-                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:  {{current_user.actual_weight}}%;"> {{current_user.actual_weight}}</div>
+                                          <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:  {{current_user.actual_weight}}%;"> <font face="Georgia" size= "1"></font>{{current_user.actual_weight}} </font></div>
                                         </div>
                                         {%endif%}
 
@@ -254,23 +254,6 @@
           </div>
         </div>
     </div>
-    <script>
-      function progressValue(){  
-        $('.progress-bar').each(function(){    
-          var positionProgressValue = $(this).children('.progress-value').css('left','auto');
-          var progressBarValue = $(this).children('.progress-value').html();    
-          $(this).width(progressBarValue);    
-          if($(this).width() < 21){
-            positionProgressValue.css('left','0');
-          }    
-        });
-      }
-      progressValue();
-      $(window).resize(function(){
-        progressValue();
-      });
-                 
-    </script>
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>   

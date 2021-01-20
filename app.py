@@ -33,6 +33,8 @@ def load_user(id):
 @app.route('/')
 def login():
     create_db()
+    """ del_all_clients()
+    del_all_pts() """
     return render_template('login.html')
 
 
@@ -219,7 +221,6 @@ def calendar():
 
 @app.route('/chat')
 def chat():
-    
     return render_template('chat.html')
 
 

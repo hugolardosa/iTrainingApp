@@ -165,4 +165,17 @@ def setondb(personid, values):
                 = ? WHERE email== ?''',( x, val, personid))
 
 
-
+def del_all_clients():
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    c.execute('''
+        DELETE FROM CLIENT_DETAILS 
+    ''')
+    conn.commit()
+def del_all_pts():
+    conn = sqlite3.connect('databases/' + db)
+    c = conn.cursor()
+    c.execute('''
+        DELETE FROM PERSONAL_TRAINERS
+    ''')
+    conn.commit()
