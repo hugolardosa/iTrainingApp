@@ -11,11 +11,11 @@
             <div class="container">
                 <div class="row center d-flex align-items-center myheight myheader">
                     <div class="col">
-                        <h1>Meus Clientes</h1>
+                        <h1 style="padding-left: 100px;">Meus Clientes</h1>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3"><img src="{{ url_for('static', filename='/img/avatar.jpg') }}" style="height: 200px;width: 200px;margin-top: 83px;"><input class="form-control-plaintext bg-white border-white shadow-none" type="text" value={{current_user.name}} readonly="" style="margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 40px;padding: 7px;"></div>
+                    <div class="col-md-3"><img src="{{ url_for('static', filename='/img/avatar.jpg') }}" style="height: 200px;width: 200px;margin-top: 90px;"><input class="form-control-plaintext bg-white border-white shadow-none" type="text" value={{current_user.name}} style="margin-top: 1px;margin-right: 10px;margin-bottom: 10px;margin-left: 40px;padding: 10px;"></div>
                     <div class="col-md-9">
                         {% for x in lc%}
                         <div class="row">
@@ -26,7 +26,7 @@
                                     <div class="progress-bar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{x[8]}}%">{{x[8]}}%</div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="{{ url_for('addtrain') }}"><img class="rounded-circle" src="{{ url_for('static', filename='img/circled.jpg') }}" style="margin-top: 56px;background: rgba(248,249,250,0);padding: 0px;width: 38px;"></a></div>
+                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="{{ url_for('addtrain') }}"><img class="rounded-circle" src="{{ url_for('static', filename='img/circled.jpg') }}" style="margin-top: 45px;background: rgba(248,249,250,0);padding: 0px;width: 38px;"></a></div>
                         </div>
                         {% endfor%}
                             <!-- <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="{{ url_for('addtrain') }}"><img class="rounded-circle" src="{{ url_for('static', filename='img/circled.jpg') }}" style="margin-top: 66px;background: rgba(248,249,250,0);padding: 0px;width: 38px;"></a></div>
