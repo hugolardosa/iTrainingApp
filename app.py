@@ -127,6 +127,7 @@ def signup_post():
         values = (email, name, password, pt_code,
                   address, city, cell_phone, postal_code)
         create_entry_db('PT_DETAILS', values)
+        return redirect(url_for('login'))
 
     return redirect(url_for('mensalidade'))
 
